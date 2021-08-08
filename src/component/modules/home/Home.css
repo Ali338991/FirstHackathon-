@@ -1,0 +1,19 @@
+.sha{
+    color: #0c0b0b;
+    background: #FFFFFF;
+    text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+}
+.Course_Card{
+    overflow: hidden;
+    position: relative;
+    /* background-color: brown;   */
+
+    
+}
+.Course_Card:hover{   
+   
+    transition: all 0.2s;   
+    transform: scale(1.05);
+ 
+
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon"> -->
+    <title>Ali </title>
+    <link rel="stylesheet" href="./assets/ali.css">
+    <!--   ---------------Boostraps  ---------------  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <style>
+    .card-img-top {
+    width: 100%;
+    height: 200px; 
+    background-position: center;
+    background-size: cover;
+}
+.parent {
+  width: 100%;
+  height: 400px;
+
+  overflow: hidden;
+  position: relative;
+
+  display: inline-block;
+  cursor: pointer;
+}
+
+.child {
+
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all 1.4s;
+}
+
+
+.bg-card-for-top-product:hover .child,
+.bg-card-for-top-product:hover .child {
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.parent:hover .child:before,
+.parent:focus .child:before {
+  display: block;
+}
+
+.parent:hover a,
+.parent:focus a {
+  display: block;
+}
+
+.child:before {
+  content: "";
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+
+        .card-blog-thumbnail-2 {
+            background-image: url('./assets/images/blogs/hicking-blog\ \(1\).jpg');
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--   ---------------navbar  ---------------  -->
+
+
+    <div class="container mt-3 ">
+        <div class="row">
+
+            
+            <div class="col-md-6 bg-card-for-top-product my-3 ">
+                <div class="card  blog-card">
+                    <div class=" wrapper">
+                        <div class="parent">
+                            <div class="card-img-top child bg-one card-blog-thumbnail-2  test-shine ">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body body-inside">
+                        <p class="card-text posting-info my-1">By admin on April 5, 2021</p>
+                        <a href="" class="blog-anchor">
+                            <p class="card-text p-0 m-0 blog-name my-1">How Hicking Helps us to grow</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    <!--   ---------------Blog  End ---------------  -->
+
+
+    <!-- footer  -->
+ 
+
+
+    <!--   ---------------Boostrasp Scripts ---------------  -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        var myNav = document.getElementById('mynav');
+        window.onscroll = function () { "use strict"; myNav.classList.add("nav-colored"); };
+    </script>
+
+    <!--   ---------------custom Scripts ---------------  -->
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
