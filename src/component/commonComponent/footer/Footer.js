@@ -5,18 +5,20 @@ import "./Footer.css";
 
 import {
   FaFacebook,
-  FaTwitter,
-  FaInstagramSquare,
-  FaPinterest,
+  FaLinkedin,
+  FaYoutube,
 } from "react-icons/fa";
+import {
+  IoLogoYoutube
+} from "react-icons/io";
 
 export default function Footer() {
     return (
         <div style={{}}>
-        <Container fluid className="px-5 py-5 bg-dark mt-5"> 
+        <Container fluid className="px-5 py-5 bgC mt-5"> 
           <Row className="justify-content-lg-center">
-            <Col lg={3} md={6} sm={12}>
-              <h3 className="footer-heading">Private</h3>
+            <Col lg={4} md={6} sm={12}>
+              <h3 className="footer-heading heaC1">AFTC</h3>
               <Nav className="d-flex flex-column">
                 <Link to="/" className="footer-link ">
                   About
@@ -32,82 +34,60 @@ export default function Footer() {
                 </Link>
               </Nav>
               <div className="pt-2 d-flex ">
-                <Link to="/Login" className="">
+                <a  target="_blank" href="https://www.facebook.com/ACCAvsOBUvsICAEW" className="">
                   <FaFacebook size={30} color="rgb(169, 169, 169)" />
-                </Link>
-                <Link to="/Login" className="ms-3">
-                  <FaTwitter size={30} color="rgb(169, 169, 169)" />
-                </Link>
-                <Link to="/Login" className="ms-3">
-                  <FaInstagramSquare size={30} color="rgb(169, 169, 169)" />
-                </Link>
-                <Link to="/Login" className="ms-3">
-                  <FaPinterest size={30} color="rgb(169, 169, 169)" />
-                </Link>
+                </a>
+                <a  target="_blank" href="https://www.linkedin.com/company/accountancy-finance-training-centre" className="ms-3">
+                  <FaLinkedin size={30} color="rgb(169, 169, 169)" />
+                </a>
+                <a target="_blank" href="https://www.youtube.com/channel/UCDcJTWx-3e0sfyjYY5-nxmg" className="ms-3">
+                  <IoLogoYoutube size={30} color="rgb(169, 169, 169)" />
+                </a>
+              
               </div>
             </Col>
-
-            <Col lg={3} md={6} sm={12}>
-              <h3 className="footer-heading">Apps</h3>
-              <Nav className="d-flex flex-column">
-                <Link to="/" className="footer-link ">
-                  Android App
-                </Link>
-              </Nav>
+            
+            <Col lg={4} md={6} sm={12}>
+              <h3 className="footer-heading  heaC1">Quick Navigation</h3>              
+                
+                  <Nav className="d-flex flex-column" >
+                    <Link to="/News" className="footer-link ">
+                      News
+                    </Link>
+                    <Link to="/ICAEW" className="footer-link">
+                      ICAEW
+                    </Link>
+                    <Link to="/ACCA" className="footer-link">
+                      ACCA
+                    </Link>
+                    <Link to="/OBU" className="footer-link">
+                     OBU
+                    </Link>
+                    <Link to="/CMA" className="footer-link">
+                     CMA
+                    </Link>
+                    <Link to="/CFA" className="footer-link ">
+                     CFA
+                    </Link>
+                  </Nav>
+           
             </Col>
 
             <Col lg={4} md={6} sm={12}>
-              <h3 className="footer-heading text-center">Free Photos</h3>
-              <Row>
-                <Col className="">
-                  <Nav className="d-flex flex-column">
-                    <Link to="/DpStock" className="footer-link ">
-                      DpStock
-                    </Link>
-                    <Link to="/G-RomanticPicture" className="footer-link">
-                      Gallery Picture
-                    </Link>
-                    <Link to="/G-RomanticVideo" className="footer-link">
-                      Gallery Video
-                    </Link>
-                    <Link to="/G-HotPic" className="footer-link">
-                      Gallery HotPic
-                    </Link>
-                    <Link to="/G-HotVideo" className="footer-link">
-                      Gallery HotVideo
-                    </Link>
-                  </Nav>
-                </Col>
-                <Col className="">
-                  <Nav className="d-flex flex-column">
-                    <Link to="/Poetry" className="footer-link ">
-                      Poetry
-                    </Link>
-                    <Link to="/RomanticPic" className="footer-link">
-                      RomanticPic
-                    </Link>
-                    <Link to="/RomanticVideos" className="footer-link">
-                      Romantic Videos
-                    </Link>
-                    <Link to="/HotPic" className="footer-link">
-                      HotPic
-                    </Link>
-                    <Link to="/HotVideo" className="footer-link">
-                      HotVideo{" "}
-                    </Link>
-                  </Nav>
-                </Col>
-              </Row>
-            </Col>
+              <h3 className="footer-heading heaC1">Our Introduction</h3>
+             <p className="text-white"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p> </Col>
+
           </Row>
         </Container>
-        <div style={{ backgroundColor: "gray" }}>
+        <div style={{ backgroundColor: "gray"}}>
           <h5 className="text-center py-3 text-white">
-            All right reserved
-            <Link to="/Admin" className="Admin ms-1">
+          COPYRIGHT © 2021 AFTC. ALL RIGHTS RESERVED.     
+              
+          <Link to="/" className="Admin ms-1" >
                Admin
             </Link>
           </h5>
+        
         </div>
       </div>
    

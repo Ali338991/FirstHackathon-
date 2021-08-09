@@ -8,9 +8,9 @@ export default function NavigationBar() {
   const history = useHistory();
   return (
     <div  className="mar">
-      <Navbar collapseOnSelect expand="lg"  variant="dark" fixed="top" style={{backgroundColor:"#1d1d36",fontWeight:"500"}}>
+      <Navbar collapseOnSelect expand="lg"  variant="dark" fixed="top" className="bgC" style={{fontWeight:"500"}}>
         <Container>
-          <Navbar.Brand href="/" className="fw-bold">
+          <Navbar.Brand href="/" className="fw-bold heaC">
            AFTC
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -68,7 +68,7 @@ export default function NavigationBar() {
               <Nav.Link eventKey="ContactUs">Contact Us</Nav.Link>
             </Nav>
             <Nav className="ms-3">
-            <Nav.Link as={Link} to="/join" style={{backgroundColor:"#D5AC4E",borderRadius:10,}}>Join</Nav.Link>
+            <Nav.Link as={Link} to="/join" style={{backgroundColor:"#D5AC4E", color:"white",borderRadius:10,}}>Join</Nav.Link>
 
             </Nav>
             

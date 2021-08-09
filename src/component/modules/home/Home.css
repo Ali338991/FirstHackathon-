@@ -1,8 +1,4 @@
-.sha{
-    color: #0c0b0b;
-    background: #FFFFFF;
-    text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
-}
+
 .Course_Card{
     overflow: hidden;
     position: relative;
@@ -17,3 +13,21 @@
  
 
 }
+.Announcement_Section{
+
+ 
+    /* background-color: var(--main);
+
+    color: rgb(233, 224, 224); */
+}
+.Announcement{
+    color: black;
+    margin-bottom: 50px;
+    
+}
+.Announcement:hover{
+    background-color: #1d1d36;
+    color: white;
+}
+
+

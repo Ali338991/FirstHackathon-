@@ -28,7 +28,7 @@ export default function Navigation() {
         
 
       </Switch>
-      {/* <Footer/> */}
+      <Footer/>
       
     </Router>
   );
