@@ -68,7 +68,7 @@ export default function NavigationBar() {
               <Nav.Link eventKey="ContactUs">Contact Us</Nav.Link>
             </Nav>
             <Nav className="ms-3">
-            <Nav.Link as={Link} to="/join" style={{backgroundColor:"#D5AC4E", color:"white",borderRadius:10,}}>Join</Nav.Link>
+            <Nav.Link as={Link} to="/Login" style={{backgroundColor:"#D5AC4E", color:"white",borderRadius:10,}}>Join</Nav.Link>
 
             </Nav>
             

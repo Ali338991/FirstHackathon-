@@ -83,7 +83,7 @@ export default function Footer() {
           <h5 className="text-center py-3 text-white">
           COPYRIGHT © 2021 AFTC. ALL RIGHTS RESERVED.     
               
-          <Link to="/" className="Admin ms-1" >
+          <Link to="/Admin" className="Admin ms-1" >
                Admin
             </Link>
           </h5>

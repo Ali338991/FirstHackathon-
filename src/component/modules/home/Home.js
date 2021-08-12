@@ -23,7 +23,11 @@ export default function Home() {
   const [Trending, setTrending] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
+    setTimeout(() => {
     handleShow();
+
+      
+    }, 700);
   }, []);
 
   const [show, setShow] = useState(false);

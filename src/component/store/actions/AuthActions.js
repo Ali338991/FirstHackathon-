@@ -1,87 +1,108 @@
-import { db,auth } from "../../config/Firebase";
-import firebase from "firebase";
+import { db, auth } from "../../config/Firebase";
+// import { CHECK_USER } from "../reducers/TodoType";
 
-
-export const LOGIN = "Login";
+export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
-export const CheckUser = "CheckUser";
-export const user = "user";
-// var provider = new firebase.auth.GoogleAuthProvider();
+export const SIGNUP = "SIGNUP";
+export const USER_DATA = "USER_DATA";
 
-export const doLogin = (provider) => async (dispatch) => {
+export const loadUserData = (uid) => async (dispatch) => {
   try {
-    // firebase login
+    const userData = await db.collection("User")
+    .where("id", "==", uid)
+    .get()
 
-    
-    const userCredential = await firebase.auth().signInWithPopup(provider);
-    var user = userCredential.user;
-    console.log("user", user.photoURL);
-    
+    console.log("userData", userData);
+
     dispatch({
-      type: LOGIN,
-      payload: user,
+      type: USER_DATA,
+      payload: userData,
     });
+
   } catch (error) {
-      alert(JSON.stringify(error))
+    alert(error);
     console.log("error", error);
   }
 };
 
-
-export const doCheckUser = (user) => async (dispatch) => {
+export const doLogin = (obj, history, setSpin) => async (dispatch) => {
   try {
+    setSpin(true);
     // firebase login
-
-    
-  
-    
-    dispatch({
-      type: CheckUser,
-      payload: user,
-    });
-  } catch (error) {
-      alert(JSON.stringify(error))
-    console.log("error", error);
-  }
-};
-
-// export const doSignup = (user) => async (dispatch) => {
-//   try {
-//     // firebase login
-
-//     const userCredential = await auth.createUserWithEmailAndPassword(user.email, user.password);
-    
-//     var userData = userCredential.user;
-
-//     // db firestore
-//     await db.collection("users").add({
-//        ...user,
-//        uid: userData.uid
-//     })
-    
-//     dispatch({
-//       type: LOGIN,
-//       payload: userData,
-//     });
-
-//   } catch (error) {
-//       alert(JSON.stringify(error))
-//     console.log("error", error);
-//   }
-// };
-
-
-
-export const doLogout = () => async (dispatch) => {
-    try {
-      // firebase login
-      const res = await auth.signOut();
-      console.log("user", res);
+    const userResult = await auth.signInWithEmailAndPassword(
+      obj.Email,
+      obj.Password
+    );
+    console.log("userResult", userResult.user);
+    console.log("userResult", userResult.user.emailVerified);
+    if (userResult.user.emailVerified === true) {
       dispatch({
-        type: LOGOUT,
+        type: LOGIN,
+        payload: userResult.user,
       });
-    } catch (error) {
-        alert(JSON.stringify(error))
-      console.log("error", error);
+      setSpin(false);
+      history.replace("/User");
+    } else {
+      setSpin(false);
+      history.replace("/Login");
+      alert("First Verify Email");
     }
-  };
+  } catch (error) {
+    alert(error);
+    setSpin(false);
+  }
+};
+
+export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
+  try {
+    setSpin(true);
+    // firebase login
+    const result = await auth.createUserWithEmailAndPassword(
+      obj.Email,
+      obj.Password
+    );
+    await result.user.updateProfile({
+      displayName: obj.FName + obj.LName,
+    });
+    await result.user.sendEmailVerification();
+    await db.collection("OurSubscriber").add({ Email: obj.Email });
+    console.log("uID", result.user.uid);
+    await db.collection("User").add({
+      id: result.user.uid,
+      Name: obj.FName + obj.LName,
+      Email: obj.Email,
+      Phone: obj.Phone,
+      RegNo: obj.RegNo,
+      MyCourse: obj.MyCourse,
+      Password: obj.Password,
+    });
+    console.log("result", result.user.emailVerified);
+    dispatch({
+      type: SIGNUP,
+      payload: result.user,
+    });
+
+    setSpin(false);
+
+    history.replace("/Login");
+    alert("Plz Check Your Email For Verification");
+  } catch (error) {
+    history.replace("/SignUp");
+    setSpin(false);
+    alert(JSON.stringify(error));
+  }
+};
+
+export const doLogout = () => (dispatch) => {
+  try {
+    // firebase login
+    const res = auth.signOut();
+    console.log("user", res);
+    dispatch({
+      type: LOGOUT,
+    });
+  } catch (error) {
+    alert(JSON.stringify(error));
+    console.log("error", error);
+  }
+};
