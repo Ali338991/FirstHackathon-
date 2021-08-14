@@ -4,7 +4,7 @@ import {  Route, Redirect } from "react-router-dom";
 
 export default function PublicRoute({children, auth, ...rest}) {
     return (
-        <Route {...rest} render={()=> auth? <Redirect to='/'/> : children }/>
+        <Route {...rest} render={()=> auth? <Redirect to='/User'/> : children }/>
 
     )
 }

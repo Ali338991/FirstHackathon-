@@ -1,29 +1,11 @@
 import { db, auth } from "../../config/Firebase";
+import firebase from "firebase";
 // import { CHECK_USER } from "../reducers/TodoType";
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const SIGNUP = "SIGNUP";
-export const USER_DATA = "USER_DATA";
-
-export const loadUserData = (uid) => async (dispatch) => {
-  try {
-    const userData = await db.collection("User")
-    .where("id", "==", uid)
-    .get()
-
-    console.log("userData", userData);
-
-    dispatch({
-      type: USER_DATA,
-      payload: userData,
-    });
-
-  } catch (error) {
-    alert(error);
-    console.log("error", error);
-  }
-};
+export const CHECK_USER = "CHECK_USER";
 
 export const doLogin = (obj, history, setSpin) => async (dispatch) => {
   try {
@@ -33,12 +15,30 @@ export const doLogin = (obj, history, setSpin) => async (dispatch) => {
       obj.Email,
       obj.Password
     );
-    console.log("userResult", userResult.user);
-    console.log("userResult", userResult.user.emailVerified);
+    const id = userResult.user.uid;
+    //For Getting data Which user Provide on the time of Signup
+    const data = await db.collection("User").where("id", "==", id).get();
+    let userData = [];
+    data.forEach((doc) => {
+      userData.push({
+        ...doc.data(),
+        docId: doc.id,
+      });
+    });
+    //Convert Array into Object
+    userData = userData.values();
+    for (let val of userData) {
+      userData = val;
+    }
+    //End UserData Code
+
     if (userResult.user.emailVerified === true) {
       dispatch({
         type: LOGIN,
-        payload: userResult.user,
+        payload: {
+          user: userResult.user,
+          userData: userData,
+        },
       });
       setSpin(false);
       history.replace("/User");
@@ -65,6 +65,8 @@ export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
       displayName: obj.FName + obj.LName,
     });
     await result.user.sendEmailVerification();
+     await auth.signOut();
+
     await db.collection("OurSubscriber").add({ Email: obj.Email });
     console.log("uID", result.user.uid);
     await db.collection("User").add({
@@ -77,13 +79,12 @@ export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
       Password: obj.Password,
     });
     console.log("result", result.user.emailVerified);
+
     dispatch({
       type: SIGNUP,
       payload: result.user,
     });
-
     setSpin(false);
-
     history.replace("/Login");
     alert("Plz Check Your Email For Verification");
   } catch (error) {
@@ -93,13 +94,83 @@ export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
   }
 };
 
+export const doChangePassword =
+  (Password, history, setSpin, docId) => async (dispatch) => {
+    try {
+      setSpin(true);
+      const user = await firebase.auth().currentUser;
+      console.log("USERS", user);
+      await user.updatePassword(Password);
+      await db.collection("User").doc(docId).update({
+        Password: Password,
+      });
+      setSpin(false);
+      alert("Your Password Update");
+    } catch (error) {
+      alert(error);
+      setSpin(false);
+      console.log("error", error);
+    }
+  };
+
+  export const doSendMail = () => async(dispatch) => {
+    try {
+      console.log("doSendMail Working");
+      const user = await firebase.auth().currentUser;
+      await user.sendEmailVerification();
+      console.log("doSendMail Done");
+
+
+
+     
+
+    } catch (error) {
+      alert(JSON.stringify(error));
+      console.log("error", error);
+    }
+  };
+  
+
 export const doLogout = () => (dispatch) => {
   try {
+    console.log("Logout Working");
     // firebase login
     const res = auth.signOut();
-    console.log("user", res);
+    console.log("user", res);  
     dispatch({
       type: LOGOUT,
+      
+    });
+  } catch (error) {
+    alert(JSON.stringify(error));
+    console.log("error", error);
+  }
+};
+
+export const doCheckUser = (user) => async (dispatch) => {
+  try {
+    const id = user.uid;
+    //For Getting data Which user Provide on the time of Signup
+    const data = await db.collection("User").where("id", "==", id).get();
+    let userData = [];
+    data.forEach((doc) => {
+      userData.push({
+        ...doc.data(),
+        docId: doc.id,
+      });
+    });
+    //Convert Array into Object
+    userData = userData.values();
+    for (let val of userData) {
+      userData = val;
+    }
+    //End UserData Code
+    dispatch({
+      type: CHECK_USER,
+      payload: {
+        user: user,
+        userData: userData,
+      },
     });
   } catch (error) {
     alert(JSON.stringify(error));

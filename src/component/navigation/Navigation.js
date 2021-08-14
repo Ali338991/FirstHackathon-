@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavigationBar from "../commonComponent/navigationBar/NavigationBar";
 import Login from "../modules/auth/login/Login";
@@ -8,34 +9,52 @@ import Footer from "../commonComponent/footer/Footer";
 import AdminNavigation from "../modules/Admin/adminNavigation/AdminNavigation";
 import createBrowserHistory from "history/createBrowserHistory";
 import UserNavigation from "../modules/user/userNavigation/UserNavigation";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
+import Verify from "../../Verify";
 
 export default function Navigation() {
   const history = createBrowserHistory();
+  const authState = useSelector((state) => state.AuthReducer.isUserLoggedIn);
+  const userEmail = useSelector((state) => state.AuthReducer.user?.emailVerified);
 
   return (
     <Router>
-      {history.location.pathname === "/User" || history.location.pathname === "/Admin" || history.location.pathname === "/Login" || history.location.pathname === "/SignUp" ? null : <NavigationBar />}
+      {history.location.pathname === "/User" ||
+      history.location.pathname === "/Admin" ||
+      history.location.pathname === "/Login" ||
+      history.location.pathname === "/SignUp" ? null : (
+        <NavigationBar />
+      )}
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
 
-        <Route path="/Login">
+        <PublicRoute path="/Login" auth={authState}>
           <Login />
-        </Route>
-        
-        <Route path="/User">
-          <UserNavigation />
-        </Route>
+        </PublicRoute>
+
+        <PrivateRoute path="/User" auth={authState}>
+          {!userEmail ? <Verify /> : <UserNavigation />}
+        </PrivateRoute>
 
         <Route path="/SignUp">
           <SignUp />
         </Route>
-        <Route path="/Admin">
+
+        <PrivateRoute path="/Admin" auth={authState}>
           <AdminNavigation />
-        </Route>
+        </PrivateRoute>
+      
       </Switch>
-      {/* <Footer /> */}
+
+      {history.location.pathname === "/User" ||
+      history.location.pathname === "/Admin" ||
+      history.location.pathname === "/Login" ||
+      history.location.pathname === "/SignUp" ? null : (
+        <Footer />
+      )}
     </Router>
   );
 }

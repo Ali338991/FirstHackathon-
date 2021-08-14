@@ -1,5 +1,5 @@
 
-import {LOGIN,LOGOUT,SIGNUP,USER_DATA} from "../actions/AuthActions";
+import {LOGIN,LOGOUT,SIGNUP,CHECK_USER} from "../actions/AuthActions";
 // we will use this isUserLoggedIn in navigation for checking weather user login or not
 const initialState = {
   isUserLoggedIn : false,
@@ -19,20 +19,24 @@ const initialState = {
                  };
              }
 
-             case USER_DATA:{
+             case CHECK_USER:{
                 // if user login than what?
                      return {
                          ...state,
-                         userData: action.payload
+                         isUserLoggedIn:  true,
+                         user: action.payload.user,
+                         userData:action.payload.userData
                      };
                  }
 
          case LOGIN:{
         // if user login than what?
+       
              return {
                  ...state,
                 isUserLoggedIn:  true,
-                user: action.payload
+                user: action.payload.user,
+                userData:action.payload.userData
              };
          }
 

@@ -27,7 +27,6 @@ export default function Login() {
 
     setEmail("");   
     setPassword("");   
-    console.log("Check obj in Login form", obj);
   };
 
   if (Spin) {
