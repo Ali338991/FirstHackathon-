@@ -15,7 +15,7 @@ import Courses from "./Courses";
 import { loadData } from "../../store/actions/AddPicAction";
 import ICAEW from "../../assets/Courses/ICAEW.jpg";
 import Announcement from "./Announcement";
-import Marquee from "./Marquee";
+import Marquee from "../../commonComponent/Marquee";
 import Testimonial from "./testimonial/Testimonial";
 import News from "./News";
 

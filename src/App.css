@@ -29,3 +29,40 @@
 .shaa{
   box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
 }
+
+
+/* Home Page */
+
+
+.Course_Card{
+  overflow: hidden;
+  position: relative;
+  /* background-color: brown;   */
+
+  
+}
+.Course_Card:hover{   
+ 
+  transition: all 0.2s;   
+  transform: scale(1.05);
+
+
+}
+.Announcement_Section{
+
+
+  /* background-color: var(--main);
+
+  color: rgb(233, 224, 224); */
+}
+.Announcement{
+  color: black;
+  margin-bottom: 50px;
+  
+}
+.Announcement:hover{
+  background-color: #1d1d36;
+  color: white;
+}
+
+

@@ -12,8 +12,6 @@ export default function SignUp() {
   const [LName, setLName] = useState("");
   const [Email, setEmail] = useState("");
   const [Phone, setPhone] = useState();
-  const [RegNo, setRegNo] = useState("");
-  const [MyCourse, setMyCourse] = useState("");
   const [Password, setPassword] = useState();
   const [Spin, setSpin] = useState(false)
 
@@ -27,18 +25,14 @@ export default function SignUp() {
       FName: FName,
       LName: LName,
       Email: Email,
-      Phone: Phone,
-      RegNo: RegNo,
-      MyCourse: MyCourse,
-      Password: Password,
+      Phone: Phone,    
+      Password: Password,   
     };
     dispatch(doSignUp(obj,history,setSpin));
     setFName("");
     setLName("");
     setEmail("");
-    setPhone("");
-    setRegNo("");
-    setMyCourse("");
+    setPhone("");   
     setPassword("");   
     console.log("Check obj in signup form", obj);
   };
@@ -68,10 +62,13 @@ export default function SignUp() {
       <Container fluid ClassName="justify-content-center">
         <div class="row justify-content-center mt-5">
           <Col lg={6} md={8} sm={10}>
+
             <Form
             onSubmit={onSubmit}
               style={{ padding: 30, boxShadow: "0 1rem 3rem rgba(0,0,0,.175)" }}
             >
+          <h2 style={{textAlign:"center", marginBottom:30, fontFamily:"monospace",fontSize:40}} >SignUp</h2>
+
               <Row>
                 <Col>
                   <Form.Group className="mb-3" controlId="formBasicText">
@@ -138,46 +135,7 @@ export default function SignUp() {
                 </Col>
               </Row>
 
-              <Row>
-                <Col>
-                  <Form.Group className="mb-3" controlId="formBasicText">
-                    <Form.Label style={{ fontSize: 20 }}>
-                      Choose Course
-                    </Form.Label>
-                    <Form.Select
-                      value={MyCourse}
-                      onChange={(e) => {
-                        setMyCourse(e.target.value);
-                      }}
-                      aria-label="Default select example"
-                    >
-                      <option>Choose Course</option>
-                      <option>ICAEW</option>
-                      <option>ACCA</option>
-                      <option>OBU</option>
-                      <option>CMA</option>
-                      <option>CFA</option>
-                    </Form.Select>
-                  </Form.Group>
-                </Col>
-
-                <Col>
-                  <Form.Group className="mb-3" controlId="formBasicText">
-                    <Form.Label style={{ fontSize: 20 }}>
-                      Registration Number
-                    </Form.Label>
-                    <Form.Control
-                      value={RegNo}
-                      onChange={(e) => {
-                        setRegNo(e.target.value);
-                      }}
-                      type="text"
-                      placeholder="Enter Registration Number"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-
+            
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label style={{ fontSize: 20 }}>Password</Form.Label>
                 <Form.Control
@@ -188,13 +146,7 @@ export default function SignUp() {
                   type="password"
                   placeholder="Password"
                 />
-                <Form.Text
-                  className="text-muted text-decoration-none"
-                  as={Link}
-                  to="/forgetPassword"
-                >
-                  ?forget Password
-                </Form.Text>
+            
               </Form.Group>
 
               <Button variant="outline-info" type="submit">

@@ -73,10 +73,9 @@ export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
       id: result.user.uid,
       Name: obj.FName + obj.LName,
       Email: obj.Email,
-      Phone: obj.Phone,
-      RegNo: obj.RegNo,
-      MyCourse: obj.MyCourse,
+      Phone: obj.Phone,   
       Password: obj.Password,
+     
     });
     console.log("result", result.user.emailVerified);
 

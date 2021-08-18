@@ -1,48 +1,57 @@
 import React from "react";
-import { AiTwotoneHome,AiOutlineUser } from "react-icons/ai";
-import { BiImageAdd,BiLogOutCircle } from "react-icons/bi";
-import { FaPhotoVideo ,FaVideo} from "react-icons/fa";
-import { Carousel } from "react-bootstrap";
+import { Navbar, Nav, Container,Button, NavDropdown } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+
 
 import "./AdminNavigationBar.css";
 import { Link } from "react-router-dom";
 
 export default function AdminNavigationBar() {
+  const history = useHistory();
+  const dispatch = useDispatch()
+
+  const Logout =()=>{
+   
+
+  }
   return (
     
-      <div className="asd">
-        <Link to="/Admin" className="text-center text-decoration-none">
-          <AiTwotoneHome color="white" size={42} />
-          <div className="link">Home</div>
-        </Link>
-        <hr style={{ color: "white" }} />
-        <Link to="/Admin/AddPic" className="text-center text-decoration-none">
-          <BiImageAdd color="white" size={42} />
-          <div className="link">Add</div>
-        </Link>
-        <hr style={{ color: "white" }} />
-        <Link to="/Admin" className="text-center text-decoration-none">
-          <AiOutlineUser color="white" size={42} />
-          <div className="link">Users</div>
-        </Link>
-        <hr style={{ color: "white" }} />
-        <Link to="/Admin" className="text-center text-decoration-none">
-          <FaPhotoVideo color="white" size={42} />
-          <div className="link">Photos</div>
-        </Link>
-        <hr style={{ color: "white" }} />
-        <Link to="/Admin" className="text-center text-decoration-none">
-          <FaVideo color="white" size={42} />
-          <div className="link">Videos</div>
-        </Link>
-        <hr style={{ color: "white" }} />
-        <Link to="/Admin" className="text-center text-decoration-none">
-          <BiLogOutCircle color="white" size={42} />
-          <div className="link">Logout</div>
-        </Link>
-     
+    <div  className="">
+    <Navbar collapseOnSelect expand="lg"  variant="dark"  className="bg-dark" style={{fontWeight:"500"}}>
+      <Container>
+        <Navbar.Brand href="/" className="fw-bold heaC">
+         AFTC
+        </Navbar.Brand>
+        
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav" className="ms-5">
+          <Nav
+            className=""                   
+            onSelect={(selectedKey) => history.push(selectedKey)}>
+            <Nav.Link eventKey="/Admin">Home</Nav.Link>
+            <Nav.Link eventKey="MyCourses" color="red">
+            Courses
+            </Nav.Link>
+            <Nav.Link eventKey="/User/ChangePassword">ChangePassword</Nav.Link>
+          <Nav.Link  >Logout</Nav.Link>
 
-      </div>
+
+          </Nav>
+          
+
+          <Nav className="ms-auto">
+       
+            
+          </Nav>
+         
+          
+         
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  </div>
     
   );
 }

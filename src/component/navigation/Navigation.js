@@ -43,9 +43,9 @@ export default function Navigation() {
           <SignUp />
         </Route>
 
-        <PrivateRoute path="/Admin" auth={authState}>
+        <Route path="/Admin">
           <AdminNavigation />
-        </PrivateRoute>
+        </Route>
       
       </Switch>
 

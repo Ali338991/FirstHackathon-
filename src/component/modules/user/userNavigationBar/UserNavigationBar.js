@@ -1,16 +1,17 @@
 import React from "react";
 import { Navbar, Nav, Container,Button, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 import "./UserNavigationBar.css";
 import { Link } from "react-router-dom";
 import Profile from '../../../assets/Profile.png'
-import { useSelector, useDispatch } from "react-redux";
 import { doLogout } from "../../../store/actions/AuthActions";
 
 
 export default function UserNavigationBar() {
-  const user = useSelector(state => state.AuthReducer.user)
-  console.log("UsN",user);
+  const photoURL = useSelector(state => state.AuthReducer.user?.photoURL)
+  console.log("C_photoURL",photoURL);
   const history = useHistory();
   const dispatch = useDispatch()
 
@@ -32,7 +33,7 @@ export default function UserNavigationBar() {
               className=""                   
               onSelect={(selectedKey) => history.push(selectedKey)}>
               <Nav.Link eventKey="/User" >Profile</Nav.Link>
-              <Nav.Link eventKey="MyCourses" color="red">
+              <Nav.Link eventKey="/User/MyCourses" color="red">
               My Courses
               </Nav.Link>
               <Nav.Link eventKey="/User/ChangePassword">ChangePassword</Nav.Link>
@@ -43,12 +44,12 @@ export default function UserNavigationBar() {
             
 
             <Nav className="ms-auto">
-              {/* {(user.photoURL !== null)?
-              <img src={user.photoURL} alt="UserProfile"  className="U_P_I"/>
+              {photoURL != ""?
+              <img src={photoURL} alt="UserProfile"  className="U_P_I"/>
               :
               <img src={Profile} alt="UserProfile"  className="U_P_I"/>
               
-            } */}
+            }
               
             </Nav>
            

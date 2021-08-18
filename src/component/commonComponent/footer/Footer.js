@@ -15,7 +15,7 @@ import {
 export default function Footer() {
     return (
         <div style={{}}>
-        <Container fluid className="px-5 py-5 bgC mt-5"> 
+        <Container fluid className="px-5 py-5 bgC "> 
           <Row className="justify-content-lg-center">
             <Col lg={4} md={6} sm={12}>
               <h3 className="footer-heading heaC1">AFTC</h3>
