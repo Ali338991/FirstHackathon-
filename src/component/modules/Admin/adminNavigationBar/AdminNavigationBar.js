@@ -7,12 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 import "./AdminNavigationBar.css";
 import { Link } from "react-router-dom";
+import { doAdminLogout } from "../../../store/actions/adminAction/AdminLoginAction";
 
 export default function AdminNavigationBar() {
   const history = useHistory();
   const dispatch = useDispatch()
 
   const Logout =()=>{
+    dispatch(doAdminLogout())
    
 
   }
@@ -34,8 +36,7 @@ export default function AdminNavigationBar() {
             <Nav.Link eventKey="MyCourses" color="red">
             Courses
             </Nav.Link>
-            <Nav.Link eventKey="/User/ChangePassword">ChangePassword</Nav.Link>
-          <Nav.Link  >Logout</Nav.Link>
+            <Nav.Link  onClick={Logout}>Logout</Nav.Link>
 
 
           </Nav>

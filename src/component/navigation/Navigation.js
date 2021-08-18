@@ -11,11 +11,17 @@ import createBrowserHistory from "history/createBrowserHistory";
 import UserNavigation from "../modules/user/userNavigation/UserNavigation";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import AdminPrivateRoute from "./AdminPrivateRoute";
+import AdminPublicRoute from "./AdminPublicRoute";
 import Verify from "../../Verify";
+import AdminLogin from '../modules/Admin/adminLogin/AdminLogin'
 
 export default function Navigation() {
   const history = createBrowserHistory();
   const authState = useSelector((state) => state.AuthReducer.isUserLoggedIn);
+  const adminAuthState = useSelector((state) => state.AdminLoginReducer.isUserLoggedIn);
+ 
+  
   const userEmail = useSelector((state) => state.AuthReducer.user?.emailVerified);
 
   return (
@@ -46,11 +52,16 @@ export default function Navigation() {
           <SignUp />
         </Route>
 
-        <Route path="/Admin">
+        <AdminPublicRoute path="/AdminLogin" auth={adminAuthState}>
+          <AdminLogin />
+        </AdminPublicRoute>
+
+
+        <AdminPrivateRoute path="/Admin"  auth={adminAuthState}>
           <AdminNavigation />
           <Footer />
           
-        </Route>
+        </AdminPrivateRoute>
       
       </Switch>
 

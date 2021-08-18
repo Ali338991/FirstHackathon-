@@ -121,7 +121,7 @@ export default function Footer() {
       <div style={{ backgroundColor: "gray" }}>
         <h5 className="text-center py-3 text-white">
           COPYRIGHT © 2021 AFTC. ALL RIGHTS RESERVED.
-          <Link to="/Admin" className="Admin ms-1">
+          <Link to="/AdminLogin" className="Admin ms-1 fs-12">
             Admin
           </Link>
         </h5>
