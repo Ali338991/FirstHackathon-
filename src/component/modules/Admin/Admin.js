@@ -26,9 +26,7 @@ export default function Admin() {
     dispatch(doGetUserByAdmin(setSpin));
   }, []);
   const userCourse = useSelector((state) => state.GetDataReducer.userCourse);
-  const OurSubscriber = useSelector(
-    (state) => state.GetDataReducer.OurSubscriber
-  );
+  const OurSubscriber = useSelector((state) => state.GetDataReducer.OurSubscriber);
   const User = useSelector((state) => state.GetDataReducer.User);
   console.log("userCourse", userCourse);
   // get request about to be Assigned
@@ -78,8 +76,8 @@ export default function Admin() {
                 <Card.Title className="text-center text-white">
                   {OurSubscriber?.length}
                 </Card.Title>
-                <div className="text-center">
-                  <Link class="btn text-white ">View</Link>
+                <div className="text-center"> 
+                  <Link  to="/Admin/SubscriberList" class="btn text-white ">View</Link>
                 </div>
               </Card.Body>
             </Card>
@@ -98,7 +96,7 @@ export default function Admin() {
                   {User?.length}
                 </Card.Title>
                 <div className="text-center">
-                  <Link class="btn text-white ">View</Link>
+                  <Link  to="/Admin/UserList" class="btn text-white ">View</Link>
                 </div>
               </Card.Body>
             </Card>
@@ -116,7 +114,7 @@ export default function Admin() {
                   {filterAcceptUser?.length}
                 </Card.Title>
                 <div className="text-center">
-                  <Link class="btn text-white ">View</Link>
+                  <Link to="/Admin/StudentList" class="btn text-white ">View</Link>
                 </div>
               </Card.Body>
             </Card>
@@ -128,7 +126,7 @@ export default function Admin() {
           <Table responsive>
             <thead>
               <tr>
-                <th>uid</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>

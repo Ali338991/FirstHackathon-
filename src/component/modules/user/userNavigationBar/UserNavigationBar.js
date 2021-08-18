@@ -16,7 +16,8 @@ export default function UserNavigationBar() {
   const dispatch = useDispatch()
 
   const Logout =()=>{
-    dispatch(doLogout())
+    dispatch(doLogout(history))
+   
 
   }
   return (

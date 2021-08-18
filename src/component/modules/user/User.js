@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {loadUserData } from "../../store/actions/AuthActions";
+import {doUpdateLastSignTime, loadUserData } from "../../store/actions/AuthActions";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Loader from "../../commonComponent/Loader";
@@ -13,11 +13,14 @@ export default function User() {
   const userData = useSelector((state) => state.AuthReducer.userData);
   const uid = useSelector(state => state.AuthReducer.user?.uid)
   const photoURL = useSelector((state) => state.AuthReducer.user.photoURL);
+ 
   const docId = userData.docId;
+ 
 
   // For Check Course user enroll or not already
   useEffect(() => {
     dispatch(doCheckCourse(uid,setSpin))
+    dispatch(doUpdateLastSignTime(docId))
   
 }, [])
 

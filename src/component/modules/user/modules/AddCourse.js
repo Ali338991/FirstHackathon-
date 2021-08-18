@@ -58,7 +58,7 @@ export default function AddCourse() {
       return <Loader />;
     }
     return (
-        <div className=" ">
+        <div className="mt-5 mb-5 ">
             <h2 className="text-center py-5">Add Course</h2>
       <Container>
         <Form onSubmit={onSubmit} className="shadow p-5 ">

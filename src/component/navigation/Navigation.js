@@ -20,15 +20,17 @@ export default function Navigation() {
 
   return (
     <Router>
-      {history.location.pathname === "/User" ||
+      {/* {history.location.pathname === "/User" ||
       history.location.pathname === "/Admin" ||
       history.location.pathname === "/Login" ||
       history.location.pathname === "/SignUp" ? null : (
         <NavigationBar />
-      )}
+      )} */}
       <Switch>
         <Route exact path="/">
+        <NavigationBar />          
           <Home />
+          <Footer />
         </Route>
 
         <PublicRoute path="/Login" auth={authState}>
@@ -37,6 +39,7 @@ export default function Navigation() {
 
         <PrivateRoute path="/User" auth={authState}>
           {!userEmail ? <Verify /> : <UserNavigation />}
+          <Footer />
         </PrivateRoute>
 
         <Route path="/SignUp">
@@ -45,16 +48,18 @@ export default function Navigation() {
 
         <Route path="/Admin">
           <AdminNavigation />
+          <Footer />
+          
         </Route>
       
       </Switch>
 
-      {history.location.pathname === "/User" ||
+      {/* {history.location.pathname === "/User" ||
       history.location.pathname === "/Admin" ||
       history.location.pathname === "/Login" ||
       history.location.pathname === "/SignUp" ? null : (
         <Footer />
-      )}
+      )} */}
     </Router>
   );
 }

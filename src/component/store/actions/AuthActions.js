@@ -65,7 +65,7 @@ export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
       displayName: obj.FName + obj.LName,
     });
     await result.user.sendEmailVerification();
-     await auth.signOut();
+    await auth.signOut();
 
     await db.collection("OurSubscriber").add({ Email: obj.Email });
     console.log("uID", result.user.uid);
@@ -73,9 +73,10 @@ export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
       id: result.user.uid,
       Name: obj.FName + obj.LName,
       Email: obj.Email,
-      Phone: obj.Phone,   
+      Phone: obj.Phone,
       Password: obj.Password,
-     
+      joinDate: new Date().toLocaleDateString(),
+      LastSignIn: new Date().toLocaleString(),
     });
     console.log("result", result.user.emailVerified);
 
@@ -112,33 +113,26 @@ export const doChangePassword =
     }
   };
 
-  export const doSendMail = () => async(dispatch) => {
-    try {
-      console.log("doSendMail Working");
-      const user = await firebase.auth().currentUser;
-      await user.sendEmailVerification();
-      console.log("doSendMail Done");
-
-
-
-     
-
-    } catch (error) {
-      alert(JSON.stringify(error));
-      console.log("error", error);
-    }
-  };
-  
+export const doSendMail = () => async (dispatch) => {
+  try {
+    console.log("doSendMail Working");
+    const user = await firebase.auth().currentUser;
+    await user.sendEmailVerification();
+    console.log("doSendMail Done");
+  } catch (error) {
+    alert(JSON.stringify(error));
+    console.log("error", error);
+  }
+};
 
 export const doLogout = () => (dispatch) => {
   try {
     console.log("Logout Working");
     // firebase login
     const res = auth.signOut();
-    console.log("user", res);  
+    console.log("user", res);
     dispatch({
       type: LOGOUT,
-      
     });
   } catch (error) {
     alert(JSON.stringify(error));
@@ -172,7 +166,38 @@ export const doCheckUser = (user) => async (dispatch) => {
       },
     });
   } catch (error) {
+
     alert(JSON.stringify(error));
     console.log("error", error);
   }
 };
+
+export const doUpdateLastSignTime = (docId) => async (dispatch) => {
+  try {
+  const date = new Date()
+  await db.collection("User").doc(docId).update({
+    LastSignIn: date.toLocaleString()
+  })
+ 
+   
+  } catch (error) {
+    alert(JSON.stringify(error));
+    
+  }
+};
+
+export const doSubscribe = (Subscription) => async (dispatch) => {
+  try {
+
+ await db.collection("OurSubscriber").add({
+   Email : Subscription
+ })
+ alert("You subscribe Successfully")
+ 
+   
+  } catch (error) {
+    alert(error);
+    
+  }
+};
+

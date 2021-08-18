@@ -39,7 +39,7 @@ export default function ChangePassword() {
     return <Loader />;
   }
   return (
-    <div className="mt-5 ">
+    <div className="mt-5 mb-5">
       <Container>
         <Form onSubmit={onSubmit}>
           <Row>
