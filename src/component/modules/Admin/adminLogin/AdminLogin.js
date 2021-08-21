@@ -31,12 +31,12 @@ export default function Login() {
       
     }
 
-    if (Email != "Noman@gmail.com") {
-      return(
-        alert("Email Invalid")
-      )
+    // if (Email != "Noman@gmail.com") {
+    //   return(
+    //     alert("Email Invalid")
+    //   )
       
-    }
+    // }
    
 
     dispatch(doAdminLogin(obj,history,setSpin));

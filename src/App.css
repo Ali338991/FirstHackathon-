@@ -48,21 +48,26 @@
 
 
 }
-.Announcement_Section{
 
-
-  /* background-color: var(--main);
-
-  color: rgb(233, 224, 224); */
-}
 .Announcement{
   color: black;
   margin-bottom: 50px;
   
 }
 .Announcement:hover{
-  background-color: #1d1d36;
+  background-color: #1d1d36;  
   color: white;
 }
 
 
+
+
+.News{
+  background-color: #1d1d36!important;
+  color: rgb(240, 240, 240);
+  margin-bottom: 50px;
+  
+}
+.News:hover{
+  background-color: #25254b !important; 
+}

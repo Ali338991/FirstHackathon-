@@ -6,6 +6,10 @@ import createBrowserHistory from "history/createBrowserHistory";
 import StudentList from "../modules/StudentList";
 import UserList from "../modules/UserList";
 import SubscriberList from "../modules/SubscriberList";
+import News from "../modules/News";
+import Announcement from "../modules/Announcement";
+import CourseList from "../modules/CourseList";
+
 
 
 
@@ -16,7 +20,7 @@ export default function AdminNavigation() {
     <Router>
       <Admin_Nav/>
    
-
+      
       <Switch>
         <Route exact path="/Admin/">
           <Admin />
@@ -32,6 +36,18 @@ export default function AdminNavigation() {
 
         <Route exact path="/Admin/SubscriberList">
           <SubscriberList />
+        </Route>      
+
+        <Route exact path="/Admin/Announcement">
+          <Announcement />
+        </Route>
+
+        <Route exact path="/Admin/News">
+          <News />
+        </Route>
+
+        <Route exact path="/Admin/CourseList">
+          <CourseList />
         </Route>
 
 

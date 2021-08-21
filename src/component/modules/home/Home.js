@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import HomeCarousel from "./HomeCarousel";
-import TrendingPic from "./Trending";
 import { useDispatch } from "react-redux";
 import { Card, Row, Nav, Col, Modal, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import {
   FaFacebook,
   FaTwitter,
@@ -24,9 +25,7 @@ export default function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
-    handleShow();
-
-      
+      handleShow();
     }, 700);
   }, []);
 
@@ -34,6 +33,8 @@ export default function Home() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const news = useSelector((state) => state.AdminControlReducer?.news);
+
   return (
     <div style={{}}>
       {/* Modal For Latest News */}
@@ -43,18 +44,24 @@ export default function Home() {
             <Modal.Title>Latest News</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <a
-              href="#L_News"
-              style={{
-                textDecoration: "none",
-                fontWeight: "bold",
-                fontSize: 20,
-                color: "#25254b",
-              }}
-            >
-              ICAEW Lecture Uploaded
-            </a>
-            <br />
+            {news?.map((item) => {
+              return (
+                <>
+                  <a
+                    href="#L_News"
+                    style={{
+                      textDecoration: "none",
+                      fontWeight: "bold",
+                      fontSize: 20,
+                      color: "#25254b",
+                    }}
+                  >
+                    {item.NewsTitle}                  
+                  </a>
+                  <br />
+                </>
+              );
+            })}
           </Modal.Body>
 
           <Marquee title="Latest News From AFTC" />

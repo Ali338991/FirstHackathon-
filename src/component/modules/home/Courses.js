@@ -5,7 +5,7 @@ import ICAEW from "../../assets/Courses/ICAEW.jpg";
 export default function Courses() {
   return (
     <div className="sec2">
-      <h3 className="text-center fs-1 fw-bold sha heaC2">Courses</h3>
+      <h3 className="text-center fs-1 fw-bold sha heaC2">UpComing Courses</h3>
 
       <Container>
         <Row>

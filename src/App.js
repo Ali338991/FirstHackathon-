@@ -1,11 +1,15 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import firebase from 'firebase';
 import Navigation from "./component/navigation/Navigation";
 import { useDispatch } from "react-redux";
 import { doCheckUser } from "./component/store/actions/AuthActions";
+import { doGetAnnouncement, doGetCourseList, doGetNews } from "./component/store/actions/adminAction/AdminControlAction";
+import Loader from "./component/commonComponent/Loader";
 function App() {
   const dispatch = useDispatch();
+  const [Spin, setSpin] = useState(false);
+
 
   async function Check() {
     await firebase.auth().onAuthStateChanged((user) => {
@@ -19,7 +23,15 @@ function App() {
 
   useEffect(() => {
     Check();
+    dispatch(doGetNews(setSpin))
+    dispatch(doGetAnnouncement(setSpin))
+    dispatch(doGetCourseList(setSpin))
+
   }, []);
+
+  if (Spin) {
+    return <Loader />;
+  }
 
   return (
     <div>

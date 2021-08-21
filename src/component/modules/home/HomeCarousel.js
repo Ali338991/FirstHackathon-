@@ -9,16 +9,16 @@ export default function HomeCarousel() {
     return (
         <div>
        <Carousel fade  variant="dark">
-        <Carousel.Item interval={1000}>
+        <Carousel.Item interval={4000}>
           <img className="d-block w-100" src={Slide1} alt="First slide" height="550"/>
           
         
         </Carousel.Item>
-        <Carousel.Item interval={700}>
+        <Carousel.Item interval={3000}>
           <img className="d-block w-100" src={Slide2} alt="Second slide"  height="550" />
          
         </Carousel.Item>
-        <Carousel.Item interval={700}>
+        <Carousel.Item interval={2000}>
           <img className="d-block w-100" src={Slide3} alt="Second slide"  height="550" />
        
         </Carousel.Item>

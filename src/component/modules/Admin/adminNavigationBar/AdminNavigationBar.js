@@ -18,6 +18,8 @@ export default function AdminNavigationBar() {
    
 
   }
+  const GetCourseList = useSelector((state) => state.AdminControlReducer?.GetCourseList);
+
   return (
     
     <div  className="">
@@ -33,9 +35,31 @@ export default function AdminNavigationBar() {
             className=""                   
             onSelect={(selectedKey) => history.push(selectedKey)}>
             <Nav.Link eventKey="/Admin">Home</Nav.Link>
-            <Nav.Link eventKey="MyCourses" color="red">
-            Courses
+            <Nav.Link eventKey="/Admin/News" color="red">
+            News
             </Nav.Link>
+            <Nav.Link eventKey="/Admin/Announcement" color="red">
+            Announcement
+            </Nav.Link>
+            <Nav.Link eventKey="/Admin/CourseList" color="red">
+            CourseList
+            </Nav.Link>
+            <Nav.Link eventKey="/Admin/UpComingCourse" color="red">
+            UpComing Course
+            </Nav.Link>
+            <NavDropdown title="Courses" id="collasible-nav-dropdown">
+              {GetCourseList?.map((item)=>{
+                return(
+                <>
+                  <NavDropdown.Item eventKey={item.CourseName} >{item.CourseName}</NavDropdown.Item>              
+                  <NavDropdown.Divider />
+                  </>
+                )
+              })}
+              
+                      
+              </NavDropdown>
+
             <Nav.Link  onClick={Logout}>Logout</Nav.Link>
 
 

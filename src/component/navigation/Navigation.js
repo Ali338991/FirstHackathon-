@@ -19,7 +19,7 @@ import AdminLogin from '../modules/Admin/adminLogin/AdminLogin'
 export default function Navigation() {
   const history = createBrowserHistory();
   const authState = useSelector((state) => state.AuthReducer.isUserLoggedIn);
-  const adminAuthState = useSelector((state) => state.AdminLoginReducer.isUserLoggedIn);
+  const adminAuthState = useSelector((state) => state.AdminLoginReducer.isAdminLoggedIn);
  
   
   const userEmail = useSelector((state) => state.AuthReducer.user?.emailVerified);
@@ -52,12 +52,12 @@ export default function Navigation() {
           <SignUp />
         </Route>
 
-        <AdminPublicRoute path="/AdminLogin" auth={adminAuthState}>
+        <AdminPublicRoute path="/AdminLogin" adminAuth={adminAuthState}>
           <AdminLogin />
         </AdminPublicRoute>
 
 
-        <AdminPrivateRoute path="/Admin"  auth={adminAuthState}>
+        <AdminPrivateRoute path="/Admin"  adminAuth={adminAuthState}>
           <AdminNavigation />
           <Footer />
           

@@ -16,7 +16,8 @@ export default function AddCourse() {
     const [RegNo, setRegNo] = useState();
     const [MyCourse, setMyCourse] = useState();
     const [Spin, setSpin] = useState(false);
-  const courseList = ["ICAEW", "CFA","asd"];
+
+  const GetCourseList = useSelector((state) => state.AdminControlReducer?.GetCourseList);
 
   
     const dispatch = useDispatch();
@@ -88,8 +89,8 @@ export default function AddCourse() {
                   }}
                 >
                   <option>Select</option>
-                  {courseList.map((item) => {
-                    return <option>{item}</option>;
+                  {GetCourseList.map((item) => {
+                    return <option>{item.CourseName}</option>;
                   })}
                 </Form.Select>
               </Form.Group>
