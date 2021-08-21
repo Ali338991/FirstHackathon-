@@ -1,33 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import HomeCarousel from "./HomeCarousel";
+
 import { useDispatch } from "react-redux";
 import { Card, Row, Nav, Col, Modal, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagramSquare,
-  FaPinterest,
-} from "react-icons/fa";
-import Courses from "./Courses";
-import { loadData } from "../../store/actions/AddPicAction";
-import ICAEW from "../../assets/Courses/ICAEW.jpg";
-import Announcement from "./Announcement";
+
 import Marquee from "../../commonComponent/Marquee";
-import Testimonial from "./testimonial/Testimonial";
-import News from "./News";
+
 
 export default function Home() {
   const [Trending, setTrending] = useState(true);
   const dispatch = useDispatch();
-  useEffect(() => {
-    setTimeout(() => {
-      handleShow();
-    }, 700);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     handleShow();
+  //   }, 700);
+  // }, []);
 
   const [show, setShow] = useState(false);
 
@@ -69,12 +59,8 @@ export default function Home() {
       </>
       {/* End Modal  */}
 
-      <Marquee title="Live Online Session Available" />
-      <HomeCarousel />
-      <Announcement />
-      <Courses />
-      <Testimonial />
-      <News />
+      <Marquee title="First Hackton" />
+    
     </div>
   );
 }

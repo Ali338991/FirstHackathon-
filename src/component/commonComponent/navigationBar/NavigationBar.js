@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./NavigationBar.css";
@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 export default function NavigationBar() {
   const history = useHistory();
+  const [show, setShow] = useState(false);
+
   return (
     <div  className="mar">
       <Navbar collapseOnSelect expand="lg"  variant="dark" fixed="top" className="bgC" style={{fontWeight:"500"}}>
@@ -27,7 +29,7 @@ export default function NavigationBar() {
               {/* ICAEW */}
            
 
-              <NavDropdown title="ICAEW" id="collasible-nav-dropdown">
+              <NavDropdown title="ICAEW" id="collasible-nav-dropdown" renderMenuOnMount={true}>
                 <NavDropdown.Item eventKey="ICAEWLevel1" >ICAEW-Level-1</NavDropdown.Item>              
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="ICAEWLevel2">ICAEW-Level-2</NavDropdown.Item>             
@@ -35,7 +37,7 @@ export default function NavigationBar() {
 
               {/* ACCA */}
 
-              <NavDropdown title="ACCA" id="collasible-nav-dropdown">
+              <NavDropdown title="ACCA" id="collasible-nav-dropdown" renderMenuOnMount={true} >
                 <NavDropdown.Item eventKey="ACCALevel1" >ACCA-Level-1</NavDropdown.Item>              
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="ACCALevel2">ACCA-Level-2</NavDropdown.Item>             
@@ -43,7 +45,7 @@ export default function NavigationBar() {
 
               {/* OBU */}
 
-              <NavDropdown title="OBU" id="collasible-nav-dropdown">
+              <NavDropdown title="OBU" id="collasible-nav-dropdown" renderMenuOnMount={true}>
                 <NavDropdown.Item eventKey="OBULevel1" >OBU-Level-1</NavDropdown.Item>              
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="OBULevel2">OBU-Level-2</NavDropdown.Item>             
@@ -51,7 +53,7 @@ export default function NavigationBar() {
               
               {/* CMA */}
 
-              <NavDropdown title="CMA" id="collasible-nav-dropdown">
+              <NavDropdown title="CMA" id="collasible-nav-dropdown" renderMenuOnMount={true}>
                 <NavDropdown.Item eventKey="CMALevel1" >CMA-Level-1</NavDropdown.Item>              
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="CMALevel2">CMA-Level-2</NavDropdown.Item>             
@@ -59,7 +61,7 @@ export default function NavigationBar() {
 
               {/* CFA  */}
 
-              <NavDropdown title="CFA" id="collasible-nav-dropdown">
+              <NavDropdown title="CFA" id="collasible-nav-dropdown" renderMenuOnMount={true}>
                 <NavDropdown.Item eventKey="CFALevel1" >CFA-Level-1</NavDropdown.Item>              
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="CFALevel2">CFA-Level-2</NavDropdown.Item>             

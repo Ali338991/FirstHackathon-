@@ -30,29 +30,15 @@ export default function UserNavigationBar() {
           
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="ms-5">
-            <Nav
-              className=""                   
+            <Nav                               
               onSelect={(selectedKey) => history.push(selectedKey)}>
               <Nav.Link eventKey="/User" >Profile</Nav.Link>
-              <Nav.Link eventKey="/User/MyCourses" color="red">
-              My Courses
-              </Nav.Link>
-              <Nav.Link eventKey="/User/ChangePassword">ChangePassword</Nav.Link>
+            
             <Nav.Link  onClick={Logout}>Logout</Nav.Link>
 
 
             </Nav>
-            
-
-            <Nav className="ms-auto">
-              {photoURL != ""?
-              <img src={photoURL} alt="UserProfile"  className="U_P_I"/>
-              :
-              <img src={Profile} alt="UserProfile"  className="U_P_I"/>
-              
-            }
-              
-            </Nav>
+         
            
             
            

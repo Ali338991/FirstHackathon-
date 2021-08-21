@@ -4,3 +4,6 @@
   .mar{
     margin-bottom: 50px;
   }
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}

@@ -4,10 +4,7 @@ import User from '../User'
 import UserNavigationBar from "../userNavigationBar/UserNavigationBar";
 
 import createBrowserHistory from "history/createBrowserHistory";
-import ChangePassword from "../modules/ChangePassword";
-import MyCourse from "../modules/MyCourse"
-import AddCourse from "../modules/AddCourse";
-import DetailCourse from "../modules/DetailCourse";
+
 
 export default function UserNavigation() {
   const history = createBrowserHistory();
@@ -20,22 +17,7 @@ export default function UserNavigation() {
           <User />
         </Route>
 
-        <Route exact path="/User/ChangePassword">
-          <ChangePassword />
-        </Route>AddCourse
-        <Route exact path="/User/MyCourses">
-          <MyCourse />
-        </Route>
-        <Route exact path="/User/AddCourse">
-          <AddCourse />
-        </Route>
-
-        <Route exact path={`/detail/:id`}>
-          <DetailCourse />
-        </Route>
-        {/* <Route exact path="/Admin/AddPic">
-          <AddPic />
-        </Route> */}
+    
       </Switch>
     </Router>
   );

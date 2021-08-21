@@ -21,13 +21,10 @@ function App() {
     });
   }
 
-  useEffect(() => {
-    Check();
-    dispatch(doGetNews(setSpin))
-    dispatch(doGetAnnouncement(setSpin))
-    dispatch(doGetCourseList(setSpin))
+  // useEffect(() => {
+  //   Check(); 
 
-  }, []);
+  // }, []);
 
   if (Spin) {
     return <Loader />;

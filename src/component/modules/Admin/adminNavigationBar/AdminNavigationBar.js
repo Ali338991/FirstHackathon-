@@ -3,8 +3,6 @@ import { Navbar, Nav, Container,Button, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-
-
 import "./AdminNavigationBar.css";
 import { Link } from "react-router-dom";
 import { doAdminLogout } from "../../../store/actions/adminAction/AdminLoginAction";
@@ -13,12 +11,12 @@ export default function AdminNavigationBar() {
   const history = useHistory();
   const dispatch = useDispatch()
 
-  const Logout =()=>{
-    dispatch(doAdminLogout())
+  // const Logout =()=>{
+  //   dispatch(doAdminLogout())
    
 
-  }
-  const GetCourseList = useSelector((state) => state.AdminControlReducer?.GetCourseList);
+  // }
+
 
   return (
     
@@ -35,32 +33,10 @@ export default function AdminNavigationBar() {
             className=""                   
             onSelect={(selectedKey) => history.push(selectedKey)}>
             <Nav.Link eventKey="/Admin">Home</Nav.Link>
-            <Nav.Link eventKey="/Admin/News" color="red">
-            News
-            </Nav.Link>
-            <Nav.Link eventKey="/Admin/Announcement" color="red">
-            Announcement
-            </Nav.Link>
-            <Nav.Link eventKey="/Admin/CourseList" color="red">
-            CourseList
-            </Nav.Link>
-            <Nav.Link eventKey="/Admin/UpComingCourse" color="red">
-            UpComing Course
-            </Nav.Link>
-            <NavDropdown title="Courses" id="collasible-nav-dropdown">
-              {GetCourseList?.map((item)=>{
-                return(
-                <>
-                  <NavDropdown.Item eventKey={item.CourseName} >{item.CourseName}</NavDropdown.Item>              
-                  <NavDropdown.Divider />
-                  </>
-                )
-              })}
-              
-                      
-              </NavDropdown>
+         
+            
 
-            <Nav.Link  onClick={Logout}>Logout</Nav.Link>
+            {/* <Nav.Link  onClick={Logout}>Logout</Nav.Link> */}
 
 
           </Nav>

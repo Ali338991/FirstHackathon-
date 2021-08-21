@@ -26,17 +26,12 @@ export default function Navigation() {
 
   return (
     <Router>
-      {/* {history.location.pathname === "/User" ||
-      history.location.pathname === "/Admin" ||
-      history.location.pathname === "/Login" ||
-      history.location.pathname === "/SignUp" ? null : (
-        <NavigationBar />
-      )} */}
+      
       <Switch>
         <Route exact path="/">
-        <NavigationBar />          
+        {/* <NavigationBar />           */}
           <Home />
-          <Footer />
+          {/* <Footer /> */}
         </Route>
 
         <PublicRoute path="/Login" auth={authState}>
@@ -65,12 +60,7 @@ export default function Navigation() {
       
       </Switch>
 
-      {/* {history.location.pathname === "/User" ||
-      history.location.pathname === "/Admin" ||
-      history.location.pathname === "/Login" ||
-      history.location.pathname === "/SignUp" ? null : (
-        <Footer />
-      )} */}
+      
     </Router>
   );
 }

@@ -3,12 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import  Admin from '../Admin'
 import Admin_Nav from '../adminNavigationBar/AdminNavigationBar'
 import createBrowserHistory from "history/createBrowserHistory";
-import StudentList from "../modules/StudentList";
-import UserList from "../modules/UserList";
-import SubscriberList from "../modules/SubscriberList";
-import News from "../modules/News";
-import Announcement from "../modules/Announcement";
-import CourseList from "../modules/CourseList";
+
 
 
 
@@ -24,30 +19,6 @@ export default function AdminNavigation() {
       <Switch>
         <Route exact path="/Admin/">
           <Admin />
-        </Route>
-
-        <Route exact path="/Admin/StudentList">
-          <StudentList />
-        </Route>
-
-        <Route exact path="/Admin/UserList">
-          <UserList />
-        </Route>
-
-        <Route exact path="/Admin/SubscriberList">
-          <SubscriberList />
-        </Route>      
-
-        <Route exact path="/Admin/Announcement">
-          <Announcement />
-        </Route>
-
-        <Route exact path="/Admin/News">
-          <News />
-        </Route>
-
-        <Route exact path="/Admin/CourseList">
-          <CourseList />
         </Route>
 
 
