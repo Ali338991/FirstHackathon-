@@ -5,6 +5,12 @@ import { useDispatch } from "react-redux";
 import { Card, Row, Nav, Col, Modal, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Header from './Home/Header'
+import About from './Home/About'
+import Shop from './Home/Shop'
+import Menu from './Home/Menu'
+import Clients from './Home/Clients'
+import Prices from './Home/Prices'
 import banner from '../../assets/First/banner.jpg'
 
 
@@ -28,6 +34,14 @@ export default function Home() {
 
   return (
     <div style={{}}>
+      <Header/>
+      <About/>
+      <Shop />
+      <Menu />
+      <Clients />
+      <Prices />
+
+
       {/* Modal For Latest News */}
       <>
         <Modal show={show} onHide={handleClose} size="lg">
@@ -60,9 +74,7 @@ export default function Home() {
       </>
       {/* End Modal  */}
 
-     <div >
-       <img src={banner} alt="" className="banner" />
-     </div>
+     
     
     </div>
   );

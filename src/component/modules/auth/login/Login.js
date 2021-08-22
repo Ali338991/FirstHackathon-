@@ -30,6 +30,7 @@ export default function Login() {
     const obj = {
       Email: Email,
       Password: Password,
+      
     };
     console.log("checl", obj);
     dispatch(doLogin(obj,history,setSpin));

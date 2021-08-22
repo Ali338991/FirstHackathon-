@@ -24,7 +24,7 @@ export default function UserNavigationBar() {
       <Navbar collapseOnSelect expand="lg"  variant="dark"  className="bg-dark" style={{fontWeight:"500"}}>
         <Container>
           <Navbar.Brand href="/" className="fw-bold heaC">
-           AFTC
+          Restaurant
           </Navbar.Brand>
           
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

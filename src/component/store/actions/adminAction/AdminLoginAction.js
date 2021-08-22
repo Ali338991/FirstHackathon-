@@ -33,13 +33,21 @@ export const doAdminLogin = (obj, history, setSpin) => async (dispatch) => {
     //End AdminData Code
 
     if (AdminResult.user.emailVerified === true) {
-      dispatch({
-        type: ADMIN_LOGIN,
-        payload: {
-          Admin: AdminResult.user,
-          AdminData: AdminData,
-        },
-      });
+      if (AdminData.role === "Admin") {
+        dispatch({
+          type: ADMIN_LOGIN,
+          payload: {
+            Admin: AdminResult.user,
+            AdminData: AdminData,
+          },
+        });
+        
+      }else(
+        await auth.signOut()
+        
+
+      )
+    
       setSpin(false);
       history.replace("/Admin");
     } else {
@@ -52,6 +60,7 @@ export const doAdminLogin = (obj, history, setSpin) => async (dispatch) => {
     setSpin(false);
   }
 };
+
 // export const doCheckUser = (user) => async (dispatch) => {
 //   try {
 //     const id = user.uid;

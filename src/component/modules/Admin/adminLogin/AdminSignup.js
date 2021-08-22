@@ -38,6 +38,7 @@ export default function AdminSignup() {
             City: City,
             Email: Email,
             Phone: Phone,
+            role:"Admin",
             Password: Password,
             joinDate: new Date().toLocaleDateString(),
             LastSignIn: new Date().toLocaleString(),

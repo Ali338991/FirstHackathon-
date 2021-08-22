@@ -24,104 +24,84 @@ export default function Footer() {
 
   return (
     <div style={{marginTop:30}}>
-      <Container fluid className="px-5 py-5 bgC ">
+      <Container fluid className="px-5 py-5 bg-dark ">
         <Row className="justify-content-lg-center">
           <Col lg={4} md={6} sm={12}>
-            <h3 className="footer-heading heaC1">AFTC</h3>
-            <Nav className="d-flex flex-column">
-              <Link to="/" className="footer-link ">
-                About
-              </Link>
-              <Link to="/" className="footer-link">
-                Blog
-              </Link>
-              <Link to="/" className="footer-link">
-                FAQ
-              </Link>
-              <Link to="/" className="footer-link">
-                Contact
-              </Link>
-            </Nav>
-            <div className="pt-2 d-flex ">
+            <h3 className="footer-heading heaC1">About</h3>
+           <p className="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it</p>
+
+           <div className="pt-2 d-flex ">
               <a
                 target="_blank"
-                href="https://www.facebook.com/ACCAvsOBUvsICAEW"
+                href="$"
                 className=""
               >
                 <FaFacebook size={30} color="rgb(169, 169, 169)" />
               </a>
               <a
                 target="_blank"
-                href="https://www.linkedin.com/company/accountancy-finance-training-centre"
+                href="#"
                 className="ms-3"
               >
                 <FaLinkedin size={30} color="rgb(169, 169, 169)" />
               </a>
               <a
                 target="_blank"
-                href="https://www.youtube.com/channel/UCDcJTWx-3e0sfyjYY5-nxmg"
+                href="#"
                 className="ms-3"
               >
                 <IoLogoYoutube size={30} color="rgb(169, 169, 169)" />
               </a>
             </div>
-            <Form onSubmit={subscribe}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-             
-                <Form.Control type="email"  value={Subscription} placeholder="Enter email" className="mt-3" onChange={(e) => {
-                setSubscription(e.target.value);
-              }}/>
-                
-              </Form.Group>
-              <Button variant="outline-success" type="submit">
-              Subscribe
-            </Button>
-            </Form>
+           
 
-          
           </Col>
 
           <Col lg={4} md={6} sm={12}>
-            <h3 className="footer-heading  heaC1">Quick Navigation</h3>
+            <h3 className="footer-heading  heaC1">Cities</h3>
 
             <Nav className="d-flex flex-column">
-              <Link to="/News" className="footer-link ">
-                News
+              <Link to="/Faisalabad" className="footer-link ">
+                Faisalabad
               </Link>
-              <Link to="/ICAEW" className="footer-link">
-                ICAEW
+              <Link to="/Lahore" className="footer-link">
+                Lahore
               </Link>
-              <Link to="/ACCA" className="footer-link">
-                ACCA
+              <Link to="/Karachi" className="footer-link">
+                Karachi
               </Link>
-              <Link to="/OBU" className="footer-link">
-                OBU
+              <Link to="/Multan" className="footer-link">
+                Multan
               </Link>
-              <Link to="/CMA" className="footer-link">
-                CMA
-              </Link>
-              <Link to="/CFA" className="footer-link ">
-                CFA
-              </Link>
+             
             </Nav>
+            
           </Col>
 
           <Col lg={4} md={6} sm={12}>
-            <h3 className="footer-heading heaC1">Our Introduction</h3>
-            <p className="text-white">
-              {" "}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.{" "}
-            </p>{" "}
+            <h3 className="footer-heading heaC1">Services</h3>
+            <Nav className="d-flex flex-column">
+              <Link to="/Pizza" className="footer-link ">
+                Pizza
+              </Link>
+              <Link to="/Biryani" className="footer-link">
+                Biryani
+              </Link>
+              <Link to="/Rice" className="footer-link">
+                Rice
+              </Link>
+              <Link to="/Pasta " className="footer-link">
+                Pasta
+              </Link>
+             
+            </Nav>
           </Col>
         </Row>
       </Container>
       <div style={{ backgroundColor: "gray" }}>
-        <h5 className="text-center py-3 text-white">
+        <h5 className="text-center py-1 text-white">
           COPYRIGHT © 2021 AFTC. ALL RIGHTS RESERVED.
-          <Link to="/AdminLogin" className="Admin ms-1 fs-12">
+          <Link to="/AdminLogin" className="Admin ms-1 ">
             Admin
           </Link>
         </h5>

@@ -37,6 +37,7 @@ export default function SignUp() {
       City: City,
       Email: Email,
       Phone: Phone,
+      role: "user",
       Password: Password,
       joinDate: new Date().toLocaleDateString(),
       LastSignIn: new Date().toLocaleString(),

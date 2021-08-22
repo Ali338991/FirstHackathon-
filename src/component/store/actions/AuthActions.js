@@ -33,14 +33,18 @@ export const doLogin = (obj, history, setSpin) => async (dispatch) => {
     }
     //End UserData Code
 
-    if (userResult.user.emailVerified === true) {
-      dispatch({
-        type: LOGIN,
-        payload: {
-          user: userResult.user,
-          userData: userData,
-        },
-      });
+    if (userResult.user.emailVerified === true ) {
+      if (userData.role === "user") {
+        dispatch({
+          type: LOGIN,
+          payload: {
+            user: userResult.user,
+            userData: userData,
+          },
+        });
+        
+      }
+      
       setSpin(false);
       history.replace("/User");
     } else {
@@ -156,14 +160,21 @@ export const doCheckUser = (user) => async (dispatch) => {
     for (let val of userData) {
       userData = val;
     }
+
+    // console.log("userDataaaaa",userData.role);
+    if (userData.role === user) {
+      dispatch({
+        type: CHECK_USER,
+        payload: {
+          user: user,
+          userData: userData,
+        },
+      });
+
+      
+    }
     //End UserData Code
-    dispatch({
-      type: CHECK_USER,
-      payload: {
-        user: user,
-        userData: userData,
-      },
-    });
+  
   } catch (error) {
 
     alert(JSON.stringify(error));

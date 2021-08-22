@@ -31,7 +31,7 @@ export default function Navigation() {
       
       <Switch>
         <Route exact path="/">
-        <NavigationBar />          
+            
           <Home />
           <Footer />
         </Route>
