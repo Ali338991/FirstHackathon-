@@ -100,7 +100,7 @@ export default function Footer() {
       </Container>
       <div style={{ backgroundColor: "gray" }}>
         <h5 className="text-center py-1 text-white">
-          COPYRIGHT © 2021 AFTC. ALL RIGHTS RESERVED.
+          COPYRIGHT © 2021 Saylani. ALL RIGHTS RESERVED.
           <Link to="/AdminLogin" className="Admin ms-1 ">
             Admin
           </Link>

@@ -16,13 +16,18 @@ import { Card, Modal, Table, Row, Col, Container, Button } from "react-bootstrap
 
 import { useState } from "react";
 import { BsPlus } from "react-icons/bs";
-import { doAddRestaurant, doGetRestaurantList } from "../../store/actions/adminAction/AdminControlAction";
+import { doAddRestaurant, doGetFilterRestaurantList, doGetRestaurantList } from "../../store/actions/adminAction/AdminControlAction";
 
 
 export default function Admin() {
+
+  useEffect(() => {
+    dispatch(doGetFilterRestaurantList(uid,setSpin))
+   
+  }, [])
  
   const uid = useSelector(state => state.AdminLoginReducer.Admin?.uid)
-  const RestaurantList = useSelector(state => state.AdminControlReducer?.RestaurantList)
+  const RestaurantList = useSelector(state => state.AdminControlReducer?.FilterRestaurantList)
   const history = useHistory();
   const [modalShow, setModalShow] = useState(false);
   //UseState

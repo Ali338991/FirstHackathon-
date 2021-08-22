@@ -122,7 +122,7 @@ export const doAdminSignUp = (obj, history, setSpin) => async (dispatch) => {
     });
 
     setSpin(false);
-    history.replace("/Login");
+    history.replace("/AdminLogin");
     alert("Plz Check Your Email For Verification");
   } catch (error) {
     history.replace("/SignUp");

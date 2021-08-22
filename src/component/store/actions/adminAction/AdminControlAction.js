@@ -2,6 +2,7 @@ import { db, auth } from "../../../config/Firebase";
 import firebase from "firebase";
 
 export const GET_RESTAURANT = "GET_RESTAURANT";
+export const GET_FILTER_RESTAURANT = "GET_FILTER_RESTAURANT";
 export const GET_RESTAURANT_ITEM = "GET_RESTAURANT_ITEM";
 export const GET_ANNOUNCEMENT = "GET_ANNOUNCEMENT";
 export const GET_COURSE_LIST = "GET_COURSE_LIST";
@@ -48,6 +49,32 @@ export const doGetRestaurantList = (setSpin) => async (dispatch) => {
       dispatch({
         type: GET_RESTAURANT,
         payload: RestaurantList
+      });
+      setSpin(false);
+    });
+  } catch (error) {
+    alert(error);
+    setSpin(false);
+  }
+};
+
+export const doGetFilterRestaurantList = (id, setSpin) => async (dispatch) => {
+  try {
+    setSpin(true);
+    await db.collection("Restaurant").where("ownerId", "==", id).onSnapshot((querySnapshot) => {
+      const FILTER_RESTAURANT = [];
+      querySnapshot.forEach((doc) => {
+        FILTER_RESTAURANT.push({
+          ...doc.data(),
+          docId: doc.id,
+        });
+      });
+
+      console.log("CheckRestaurant LISt", FILTER_RESTAURANT);
+
+      dispatch({
+        type: GET_FILTER_RESTAURANT,
+        payload: FILTER_RESTAURANT
       });
       setSpin(false);
     });

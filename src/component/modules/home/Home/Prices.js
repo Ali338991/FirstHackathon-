@@ -25,7 +25,7 @@ const Prices = () => {
                   height="200px"
                   className="cc "
                 />
-                <Card.Body style={{minHeight:170}}>
+                <Card.Body style={{height:200}}>
                   <Card.Title>{item.RestaurantName}</Card.Title>
                   <Card.Text>{item.RestaurantDesc}</Card.Text>
   

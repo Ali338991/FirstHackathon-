@@ -97,7 +97,7 @@ export default function Login() {
 
         </div>
         <h2 style={{marginTop:20,textAlign:"center"}}>
-       <Button onClick={()=>{history.replace("/")}}>Back to Home</Button>
+       <Butt onClick={()=>{history.replace("/")}}>Back to Home</Butt>
           </h2>
        
       </Container>
