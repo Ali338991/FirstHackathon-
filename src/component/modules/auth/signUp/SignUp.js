@@ -6,10 +6,14 @@ import { Link, useHistory } from "react-router-dom";
 import { doSignUp } from "../../../store/actions/AuthActions";
 import { useDispatch } from "react-redux";
 import Loader from "../../../commonComponent/Loader";
+import { CustomInput } from "../../../commonComponent/Custom";
+
 
 export default function SignUp() {
-  const [FName, setFName] = useState("");
-  const [LName, setLName] = useState("");
+  const [Name, setName] = useState("");
+  const [Country, setCountry] = useState("");
+  const [City, setCity] = useState("");
+
   const [Email, setEmail] = useState("");
   const [Phone, setPhone] = useState();
   const [Password, setPassword] = useState();
@@ -20,36 +24,46 @@ export default function SignUp() {
 
 
   const onSubmit = (e) => {
+    if (Name === "" || Country === "" || City === "" || Email === "" || Phone === "" || Password === "") {
+      return (
+        alert("All fields required")
+      )
+
+    }
     e.preventDefault();
     const obj = {
-      FName: FName,
-      LName: LName,
+      Name: Name,
+      Country: Country,
+      City: City,
       Email: Email,
-      Phone: Phone,    
-      Password: Password,   
+      Phone: Phone,
+      Password: Password,
+      joinDate: new Date().toLocaleDateString(),
+      LastSignIn: new Date().toLocaleString(),
     };
-    dispatch(doSignUp(obj,history,setSpin));
-    setFName("");
-    setLName("");
+    dispatch(doSignUp(obj, history, setSpin));
+    setName("");
+    setCountry("");
+    setCity("")
     setEmail("");
-    setPhone("");   
-    setPassword("");   
-    console.log("Check obj in signup form", obj);
+    setPhone("");
+    setPassword("");
+    
   };
 
   if (Spin) {
-      return (
-      <Loader/>
+    return (
+      <Loader />
 
-      )
+    )
   }
 
   return (
     <div>
-      <div class="text-center mt-5 mb-2" style={{ fontSize: 30 }}>
+      <div class="text-center mt-2 " style={{ fontSize: 30 }}>
         <GiBookStorm size={40} color="" style={{ marginRight: 10 }} />
 
-        <span>Online Learning Management System</span>
+        <span>Online Restaurant Management System</span>
       </div>
       <p class="text-center">
         <FiUserPlus
@@ -63,96 +77,65 @@ export default function SignUp() {
         <div class="row justify-content-center mt-5">
           <Col lg={6} md={8} sm={10}>
 
-            <Form
-            onSubmit={onSubmit}
+            <div
+
               style={{ padding: 30, boxShadow: "0 1rem 3rem rgba(0,0,0,.175)" }}
             >
-          <h2 style={{textAlign:"center", marginBottom:30, fontFamily:"monospace",fontSize:40}} >SignUp</h2>
+              <h2 style={{ textAlign: "center", marginBottom: 30, fontFamily: "monospace", fontSize: 40 }} >SignUp</h2>
 
               <Row>
                 <Col>
-                  <Form.Group className="mb-3" controlId="formBasicText">
-                    <Form.Label style={{ fontSize: 20 }}>First Name</Form.Label>
-                    <Form.Control
-                      value={FName}
-                      onChange={(e) => {
-                        setFName(e.target.value);
-                      }}
-                      type="text"
-                      placeholder="Enter First Name"
-                    />
-                  </Form.Group>
+                  <CustomInput label="Name"  placeholder="Enter your Name" value={Name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }} />
                 </Col>
                 <Col>
-                  <Form.Group className="mb-3" controlId="formBasicText">
-                    <Form.Label style={{ fontSize: 20 }}>Last Name</Form.Label>
-                    <Form.Control
-                      value={LName}
-                      onChange={(e) => {
-                        setLName(e.target.value);
-                      }}
-                      type="text"
-                      placeholder="Enter Last Name"
-                    />
-                  </Form.Group>
+                  <CustomInput label="Email" type="Email" placeholder="Enter Your Email" value={Email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }} />
                 </Col>
               </Row>
 
               <Row>
                 <Col>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label style={{ fontSize: 20 }}>
-                      Email address
-                    </Form.Label>
-                    <Form.Control
-                      value={Email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                      }}
-                      type="email"
-                      placeholder="Enter email"
-                    />
-                    <Form.Text className="text-muted">
-                      We'll never share your email with anyone.
-                    </Form.Text>
-                  </Form.Group>
+                  <CustomInput label="Phone" type="Number" placeholder="Enter Your Phone" value={Phone}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }} />
+
                 </Col>
 
                 <Col>
-                  <Form.Group className="mb-3" controlId="formBasicNumber">
-                    <Form.Label style={{ fontSize: 20 }}>
-                      Phone Number
-                    </Form.Label>
-                    <Form.Control
-                      value={Phone}
-                      onChange={(e) => {
-                        setPhone(e.target.value);
-                      }}
-                      type="number"
-                      placeholder="Enter Phone Number"
-                    />
-                  </Form.Group>
+                  <CustomInput label="Country" placeholder="Enter Your Country" value={Country}
+                    onChange={(e) => {
+                      setCountry(e.target.value);
+                    }} />
                 </Col>
               </Row>
 
-            
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label style={{ fontSize: 20 }}>Password</Form.Label>
-                <Form.Control
-                  value={Password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  type="password"
-                  placeholder="Password"
-                />
-            
-              </Form.Group>
+              <Row>
+                <Col>
+                  <CustomInput label="City" placeholder="Enter Your City" value={City}
+                    onChange={(e) => {
+                      setCity(e.target.value);
+                    }} />
 
-              <Button variant="outline-info" type="submit">
+                </Col>
+
+                <Col>
+                  <CustomInput label="Password" type="Password" placeholder="Enter Your Password" value={Password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }} />
+                </Col>
+              </Row>
+
+              <Button variant="outline-success" type="submit" onClick={onSubmit}>
                 Submit
               </Button>
-            </Form>
+            </div>
           </Col>
         </div>
       </Container>

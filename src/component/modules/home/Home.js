@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { Card, Row, Nav, Col, Modal, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import banner from '../../assets/First/banner.jpg'
 
 
 import Marquee from "../../commonComponent/Marquee";
@@ -59,7 +60,9 @@ export default function Home() {
       </>
       {/* End Modal  */}
 
-      <Marquee title="First Hackton" />
+     <div >
+       <img src={banner} alt="" className="banner" />
+     </div>
     
     </div>
   );

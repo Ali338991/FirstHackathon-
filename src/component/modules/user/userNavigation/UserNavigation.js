@@ -4,7 +4,10 @@ import User from '../User'
 import UserNavigationBar from "../userNavigationBar/UserNavigationBar";
 
 import createBrowserHistory from "history/createBrowserHistory";
+import ChangePassword from "../modules/ChangePassword";
 
+import Profile from "../modules/Profile";
+import Restaurant from "../modules/Restaurant";
 
 export default function UserNavigation() {
   const history = createBrowserHistory();
@@ -17,7 +20,23 @@ export default function UserNavigation() {
           <User />
         </Route>
 
-    
+        <Route exact path="/User/ChangePassword">
+          <ChangePassword />
+        </Route>AddCourse
+       
+        <Route exact path="/User/Profile">
+          <Profile />
+        </Route>
+
+        <Route exact path={`/:RestaurantName/:id`}>
+          <Restaurant />
+        </Route>
+        
+
+       
+        {/* <Route exact path="/Admin/AddPic">
+          <AddPic />
+        </Route> */}
       </Switch>
     </Router>
   );

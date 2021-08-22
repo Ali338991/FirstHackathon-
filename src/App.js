@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import Navigation from "./component/navigation/Navigation";
 import { useDispatch } from "react-redux";
 import { doCheckUser } from "./component/store/actions/AuthActions";
-import { doGetAnnouncement, doGetCourseList, doGetNews } from "./component/store/actions/adminAction/AdminControlAction";
+import { doGetRestaurantList } from "./component/store/actions/adminAction/AdminControlAction";
 import Loader from "./component/commonComponent/Loader";
 function App() {
   const dispatch = useDispatch();
@@ -21,10 +21,12 @@ function App() {
     });
   }
 
-  // useEffect(() => {
-  //   Check(); 
+  useEffect(() => {
+    Check(); 
+    dispatch(doGetRestaurantList(setSpin))
 
-  // }, []);
+
+  }, []);
 
   if (Spin) {
     return <Loader />;

@@ -6,6 +6,8 @@ import { Link,useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Loader from "../../../commonComponent/Loader";
 import { doAdminLogin } from "../../../store/actions/adminAction/AdminLoginAction";
+import { CustomInput } from "../../../commonComponent/Custom";
+
 
 
 export default function Login() {
@@ -31,13 +33,6 @@ export default function Login() {
       
     }
 
-    // if (Email != "Noman@gmail.com") {
-    //   return(
-    //     alert("Email Invalid")
-    //   )
-      
-    // }
-   
 
     dispatch(doAdminLogin(obj,history,setSpin));
 
@@ -57,7 +52,7 @@ export default function Login() {
       <div class="text-center mt-5 mb-2 " style={{ fontSize: 30 }}>
         <GiBookStorm size={40} color="" style={{ marginRight: 10 }} />
 
-        <span>Online Learning Management System</span>
+        <span>Online Restaurant Management System</span>
       </div>
       <p class="text-center">
         <FiUserPlus
@@ -70,33 +65,27 @@ export default function Login() {
       <Container fluid ClassName="justify-content-center">
         <div class="row justify-content-center mt-5">
           <Col lg={4} md={6} sm={8}>
+          <Form.Text className=" p-2" style={{ float: "right" }}>
+              Create Rsturant{" "}
+              <Link to="/Admin/AdminSignup" ClassName="text-decoration-none text-black">
+                SignUp
+              </Link>
+            </Form.Text>
            
             <Form
              onSubmit={onSubmit}
               style={{ padding: 30, boxShadow: "0 1rem 3rem rgba(0,0,0,.175)" }}
             >
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label style={{ fontSize: 20 }}>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
-              </Form.Group>
+              
+              <CustomInput label="Email" type="Email" placeholder="Enter Your Email" value={Email} text="We'll never share your email with anyone else."
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }} />
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label style={{ fontSize: 20 }}>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" 
-                 onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}/>
-               
-              </Form.Group>
+              <CustomInput label="Password"  type="Password" placeholder="Enter Your Password" value={Password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }} />
 
               <Button variant="outline-info" type="submit">
                 Submit
@@ -104,7 +93,11 @@ export default function Login() {
             </Form>
           </Col>
         </div>
+        <h2 style={{marginTop:20,textAlign:"center"}}>
+       <Button onClick={()=>{history.replace("/")}}>Back to Home</Button>
+          </h2>
       </Container>
+     
     </div>
   );
 }

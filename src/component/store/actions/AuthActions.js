@@ -16,7 +16,7 @@ export const doLogin = (obj, history, setSpin) => async (dispatch) => {
       obj.Password
     );
     const id = userResult.user.uid;
-    //For Getting data Which user Provide on the time of Signup
+
     const data = await db.collection("User").where("id", "==", id).get();
     let userData = [];
     data.forEach((doc) => {
@@ -25,6 +25,7 @@ export const doLogin = (obj, history, setSpin) => async (dispatch) => {
         docId: doc.id,
       });
     });
+    console.log("User",userData);
     //Convert Array into Object
     userData = userData.values();
     for (let val of userData) {
@@ -62,28 +63,25 @@ export const doSignUp = (obj, history, setSpin) => async (dispatch) => {
       obj.Password
     );
     await result.user.updateProfile({
-      displayName: obj.FName + obj.LName,
+      displayName: obj.Name
     });
     await result.user.sendEmailVerification();
-    await auth.signOut();
-
-    await db.collection("OurSubscriber").add({ Email: obj.Email });
-    console.log("uID", result.user.uid);
     await db.collection("User").add({
-      id: result.user.uid,
-      Name: obj.FName + obj.LName,
+      Name: obj.Name,
+      Country: obj.Country,
+      City: obj.City,
       Email: obj.Email,
       Phone: obj.Phone,
       Password: obj.Password,
       joinDate: new Date().toLocaleDateString(),
       LastSignIn: new Date().toLocaleString(),
+      id: result.user.uid,
     });
-    console.log("result", result.user.emailVerified);
-
     dispatch({
       type: SIGNUP,
       payload: result.user,
     });
+
     setSpin(false);
     history.replace("/Login");
     alert("Plz Check Your Email For Verification");
@@ -125,7 +123,7 @@ export const doSendMail = () => async (dispatch) => {
   }
 };
 
-export const doLogout = () => (dispatch) => {
+export const doLogout = (history) => (dispatch) => {
   try {
     console.log("Logout Working");
     // firebase login
@@ -134,6 +132,7 @@ export const doLogout = () => (dispatch) => {
     dispatch({
       type: LOGOUT,
     });
+    history.replace('/')
   } catch (error) {
     alert(JSON.stringify(error));
     console.log("error", error);
@@ -174,30 +173,30 @@ export const doCheckUser = (user) => async (dispatch) => {
 
 export const doUpdateLastSignTime = (docId) => async (dispatch) => {
   try {
-  const date = new Date()
-  await db.collection("User").doc(docId).update({
-    LastSignIn: date.toLocaleString()
-  })
- 
-   
+    const date = new Date()
+    await db.collection("User").doc(docId).update({
+      LastSignIn: date.toLocaleString()
+    })
+
+
   } catch (error) {
     alert(JSON.stringify(error));
-    
+
   }
 };
 
 export const doSubscribe = (Subscription) => async (dispatch) => {
   try {
 
- await db.collection("OurSubscriber").add({
-   Email : Subscription
- })
- alert("You subscribe Successfully")
- 
-   
+    await db.collection("OurSubscriber").add({
+      Email: Subscription
+    })
+    alert("You subscribe Successfully")
+
+
   } catch (error) {
     alert(error);
-    
+
   }
 };
 

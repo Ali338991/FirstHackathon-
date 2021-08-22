@@ -1,0 +1,9 @@
+.banner{
+    height: 450px;
+    width: 100%;
+}
+@media only screen and (max-width: 600px) {
+    .banner {
+        height: 300px;
+    }
+  }

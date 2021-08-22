@@ -11,11 +11,11 @@ export default function AdminNavigationBar() {
   const history = useHistory();
   const dispatch = useDispatch()
 
-  // const Logout =()=>{
-  //   dispatch(doAdminLogout())
+  const Logout =()=>{
+    dispatch(doAdminLogout())
    
 
-  // }
+  }
 
 
   return (
@@ -24,7 +24,7 @@ export default function AdminNavigationBar() {
     <Navbar collapseOnSelect expand="lg"  variant="dark"  className="bg-dark" style={{fontWeight:"500"}}>
       <Container>
         <Navbar.Brand href="/" className="fw-bold heaC">
-         AFTC
+         Admin Panel
         </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -33,10 +33,15 @@ export default function AdminNavigationBar() {
             className=""                   
             onSelect={(selectedKey) => history.push(selectedKey)}>
             <Nav.Link eventKey="/Admin">Home</Nav.Link>
+
+            <Nav.Link eventKey="/Admin/AddItem">Add Item</Nav.Link>
+            <Nav.Link eventKey="/Admin/Pending">Pending</Nav.Link>
+            <Nav.Link eventKey="/Admin/Accepted"> Accepted</Nav.Link>
+            <Nav.Link eventKey="/Admin/Delivered">Delivered</Nav.Link>
          
             
 
-            {/* <Nav.Link  onClick={Logout}>Logout</Nav.Link> */}
+            <Nav.Link  onClick={Logout}>Logout</Nav.Link>
 
 
           </Nav>

@@ -4,13 +4,18 @@ import { GiBookStorm } from "react-icons/gi";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { doSendMail } from "./component/store/actions/AuthActions";
+import { doLogout, doSendMail } from "./component/store/actions/AuthActions";
 
 export default function () {
+  const history = useHistory();
+
     const dispatch = useDispatch()
     const SendMail = () =>{
         dispatch(doSendMail())
     }
+    const logout = () =>{
+      dispatch(doLogout(history))
+  }
   return (
     <div>
       <div>
@@ -24,6 +29,7 @@ export default function () {
                     <p style={{fontStyle:"italic",fontSize:30,marginBottom:40}}>First Verify Your Email</p>
                     <a href="https://mail.google.com/" target="_blank" class="btn btn-info"> Verify</a>
                     <Button variant="dark" style={{marginLeft:20}} onClick={SendMail}> ReSend Email</Button>
+                    <Button variant="dark" style={{marginLeft:20}} onClick={logout}> Use another Email</Button>
              
             </Col>
           </div>

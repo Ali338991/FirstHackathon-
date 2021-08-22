@@ -1,11 +1,13 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { FiUserPlus, FaVideo } from "react-icons/fi";
 import { GiBookStorm } from "react-icons/gi";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link,useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Loader from "../../../commonComponent/Loader";
 import { doLogin } from "../../../store/actions/AuthActions";
+import banner from '../../../assets/First/banner.jpg'
+import { CustomInput } from "../../../commonComponent/Custom";
 
 
 export default function Login() {
@@ -18,30 +20,38 @@ export default function Login() {
   const history = useHistory();
 
   const onSubmit = (e) => {
+    if (Email === "" || Password === "") {
+      return(
+        alert("All Fields Required")
+      )
+      
+    }
     e.preventDefault();
-    const obj = { 
+    const obj = {
       Email: Email,
       Password: Password,
     };
+    console.log("checl", obj);
     dispatch(doLogin(obj,history,setSpin));
 
-    setEmail("");   
-    setPassword("");   
+    setEmail("");
+    setPassword("");
   };
 
   if (Spin) {
     return (
-    <Loader/>
+      <Loader />
 
     )
-}
+  }
 
   return (
-    <div>
+    <div >
+
       <div class="text-center mt-5 mb-2" style={{ fontSize: 30 }}>
         <GiBookStorm size={40} color="" style={{ marginRight: 10 }} />
 
-        <span>Online Learning Management System</span>
+        <span>Online Restaurant Management System</span>
       </div>
       <p class="text-center">
         <FiUserPlus
@@ -60,46 +70,37 @@ export default function Login() {
                 SignUp
               </Link>
             </Form.Text>
-            <Form
-             onSubmit={onSubmit}
+            <div
+
               style={{ padding: 30, boxShadow: "0 1rem 3rem rgba(0,0,0,.175)" }}
             >
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label style={{ fontSize: 20 }}>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
-              </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label style={{ fontSize: 20 }}>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" 
-                 onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}/>
-                <Form.Text
-                  className="text-muted text-decoration-none"
-                  as={Link}
-                  to="/forgetPassword"
-                >
-                  ?forget Password
-                </Form.Text>
-              </Form.Group>
+              <CustomInput label="Email" type="Email" placeholder="Enter Your Email" value={Email} text="We'll never share your email with anyone else."
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }} />
 
-              <Button variant="outline-info" type="submit">
+              <CustomInput label="Password"  type="Password" placeholder="Enter Your Password" value={Password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }} />
+
+
+
+              <Button variant="outline-info" type="submit" onClick={onSubmit}>
                 Submit
               </Button>
-            </Form>
+            </div>
           </Col>
+         
+
         </div>
+        <h2 style={{marginTop:20,textAlign:"center"}}>
+       <Button onClick={()=>{history.replace("/")}}>Back to Home</Button>
+          </h2>
+       
       </Container>
+    
     </div>
   );
 }

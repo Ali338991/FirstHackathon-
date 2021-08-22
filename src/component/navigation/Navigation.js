@@ -15,6 +15,7 @@ import AdminPrivateRoute from "./AdminPrivateRoute";
 import AdminPublicRoute from "./AdminPublicRoute";
 import Verify from "../../Verify";
 import AdminLogin from '../modules/Admin/adminLogin/AdminLogin'
+import AdminSignup from "../modules/Admin/adminLogin/AdminSignup";
 
 export default function Navigation() {
   const history = createBrowserHistory();
@@ -23,15 +24,16 @@ export default function Navigation() {
  
   
   const userEmail = useSelector((state) => state.AuthReducer.user?.emailVerified);
+  const AdminEmail = useSelector((state) => state.AdminLoginReducer.Admin?.emailVerified);
 
   return (
     <Router>
       
       <Switch>
         <Route exact path="/">
-        {/* <NavigationBar />           */}
+        <NavigationBar />          
           <Home />
-          {/* <Footer /> */}
+          <Footer />
         </Route>
 
         <PublicRoute path="/Login" auth={authState}>
@@ -40,12 +42,18 @@ export default function Navigation() {
 
         <PrivateRoute path="/User" auth={authState}>
           {!userEmail ? <Verify /> : <UserNavigation />}
-          <Footer />
+          {/* <Footer /> */}
         </PrivateRoute>
 
         <Route path="/SignUp">
           <SignUp />
         </Route>
+
+        <Route path="/Admin/AdminSignup">
+          <AdminSignup />
+        </Route>
+
+
 
         <AdminPublicRoute path="/AdminLogin" adminAuth={adminAuthState}>
           <AdminLogin />
@@ -53,7 +61,8 @@ export default function Navigation() {
 
 
         <AdminPrivateRoute path="/Admin"  adminAuth={adminAuthState}>
-          <AdminNavigation />
+        {!AdminEmail ? <Verify /> :  <AdminNavigation />}
+        
           <Footer />
           
         </AdminPrivateRoute>

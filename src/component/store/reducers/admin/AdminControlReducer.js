@@ -1,7 +1,7 @@
-import {GET_NEWS,GET_ANNOUNCEMENT,GET_COURSE_LIST} from "../../actions/adminAction/AdminControlAction";
+import {GET_RESTAURANT,GET_RESTAURANT_ITEM,GET_COURSE_LIST} from "../../actions/adminAction/AdminControlAction";
 const initialState = {
- news: null,
- Announcement:null,
+ RestaurantList: null,
+ RestaurantItem:null,
  GetCourseList:null,
  }
  
@@ -10,19 +10,19 @@ const initialState = {
  function AdminControlReducer(state=initialState, action) {
      switch (action.type) {
       
-             case GET_NEWS:{
+             case GET_RESTAURANT:{
             
                 return {
                     ...state,
-                    news:  action.payload
+                    RestaurantList: action.payload
                 };
             }
 
-            case GET_ANNOUNCEMENT:{
+            case GET_RESTAURANT_ITEM:{
             
                 return {
                     ...state,
-                    Announcement:  action.payload
+                    RestaurantItem:  action.payload
                 };
             }
             case GET_COURSE_LIST:{

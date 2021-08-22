@@ -2,8 +2,9 @@
 import {ADMIN_LOGIN,ADMIN_LOGOUT} from "../../actions/adminAction/AdminLoginAction";
 // we will use this isAdminLoggedIn in navigation for checking weather user login or not
 const initialState = {
-  isAdminLoggedIn : true,
+  isAdminLoggedIn : false,
   Admin: null,
+  AdminData:null,
 }
  
  
@@ -18,7 +19,8 @@ const initialState = {
              return {
                  ...state,
                 isAdminLoggedIn:  true,
-                Admin: action.payload,
+                Admin: action.payload.Admin,
+                AdminData:action.payload.AdminData
                
              };
          }

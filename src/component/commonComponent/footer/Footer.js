@@ -23,7 +23,7 @@ export default function Footer() {
   };
 
   return (
-    <div style={{}}>
+    <div style={{marginTop:30}}>
       <Container fluid className="px-5 py-5 bgC ">
         <Row className="justify-content-lg-center">
           <Col lg={4} md={6} sm={12}>
