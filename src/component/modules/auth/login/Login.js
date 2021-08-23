@@ -9,6 +9,7 @@ import { doLogin } from "../../../store/actions/AuthActions";
 import banner from '../../../assets/First/banner.jpg'
 import { CustomInput } from "../../../commonComponent/Custom";
 import './Login.css'
+import bg from '../../../assets/bg.jpg'
 
 
 export default function Login() {
@@ -48,7 +49,7 @@ export default function Login() {
   }
 
   return (
-    <div style={{backgroundImage: `url(https://picsum.photos/2500/1500?image=1041)`,backgroundSize:"cover"}}>
+    <div style={{backgroundImage: `url(${bg})`,backgroundSize:"cover"}}>
 
       <div class="text-center pt-5 " style={{ fontSize: 30 }}>
         <GiBookStorm size={40} color="" style={{ marginRight: 10 }} />

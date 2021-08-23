@@ -7,6 +7,7 @@ import { doSignUp } from "../../../store/actions/AuthActions";
 import { useDispatch } from "react-redux";
 import Loader from "../../../commonComponent/Loader";
 import { CustomInput } from "../../../commonComponent/Custom";
+import bg from '../../../assets/bg.jpg'
 
 
 export default function SignUp() {
@@ -60,7 +61,7 @@ export default function SignUp() {
   }
 
   return (
-    <div style={{backgroundImage: `url(https://picsum.photos/2500/1500?image=1041)`,backgroundSize:"cover",paddingBottom:20}}>
+    <div style={{backgroundImage: `url(${bg})`,backgroundSize:"cover",paddingBottom:20}}>
       <div class="text-center mt-2 " style={{ fontSize: 30 }}>
         <GiBookStorm size={40} color="" style={{ marginRight: 10 }} />
 
