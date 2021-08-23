@@ -6,7 +6,7 @@ const Header = () => {
     <div className="banner" >
       <NavigationBar />
       <div className="banner__content">
-        <div className="container">
+        <div className="container ">
           <div className="banner__text">
             <h3>Start your Business by</h3>
             <h1>Build your Own Restaurant</h1>

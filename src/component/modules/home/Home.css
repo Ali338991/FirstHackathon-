@@ -181,9 +181,35 @@ body {
 
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
+  .banner__content {
+margin-left: 30px;
+  }
   .banner__text {
-    display: none !important;
+    width: 300px;
+  }
+  .banner__text h3 {
+    font-size: 20px;
+  }
+  .banner__text h1 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 900;
+    
+  }
+  .banner__text p {
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+  .Button {
+ 
+    padding: 10px 10px;
+  }
+  .Button:hover {
+   
+    padding: 10px 10px;
+    
   }
   .shop__text {
     height: 450px;
