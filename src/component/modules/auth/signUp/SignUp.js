@@ -60,7 +60,7 @@ export default function SignUp() {
   }
 
   return (
-    <div>
+    <div style={{backgroundImage: `url(https://picsum.photos/2500/1500?image=1041)`,backgroundSize:"cover",paddingBottom:20}}>
       <div class="text-center mt-2 " style={{ fontSize: 30 }}>
         <GiBookStorm size={40} color="" style={{ marginRight: 10 }} />
 
@@ -80,7 +80,7 @@ export default function SignUp() {
 
             <div
 
-              style={{ padding: 30, boxShadow: "0 1rem 3rem rgba(0,0,0,.175)" }}
+              style={{ padding: 30, boxShadow: "0 1rem 3rem  #061521" }}
             >
               <h2 style={{ textAlign: "center", marginBottom: 30, fontFamily: "monospace", fontSize: 40 }} >SignUp</h2>
 
@@ -133,13 +133,14 @@ export default function SignUp() {
                 </Col>
               </Row>
 
-              <Button variant="outline-success" type="submit" onClick={onSubmit}>
+              <Button variant="dark" type="submit" onClick={onSubmit}>
                 Submit
               </Button>
             </div>
           </Col>
         </div>
       </Container>
+      
     </div>
   );
 }

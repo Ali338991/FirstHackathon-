@@ -99,12 +99,12 @@ export default function Footer() {
         </Row>
       </Container>
       <div style={{ backgroundColor: "gray" }}>
-        <h5 className="text-center py-1 text-white">
+        <h6 className="text-center py-1 text-white">
           COPYRIGHT © 2021 Saylani. ALL RIGHTS RESERVED.
           <Link to="/AdminLogin" className="Admin ms-1 ">
             Admin
           </Link>
-        </h5>
+        </h6>
       </div>
     </div>
   );

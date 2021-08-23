@@ -8,6 +8,7 @@ import Loader from "../../../commonComponent/Loader";
 import { doLogin } from "../../../store/actions/AuthActions";
 import banner from '../../../assets/First/banner.jpg'
 import { CustomInput } from "../../../commonComponent/Custom";
+import './Login.css'
 
 
 export default function Login() {
@@ -47,12 +48,12 @@ export default function Login() {
   }
 
   return (
-    <div >
+    <div style={{backgroundImage: `url(https://picsum.photos/2500/1500?image=1041)`,backgroundSize:"cover"}}>
 
-      <div class="text-center mt-5 mb-2" style={{ fontSize: 30 }}>
+      <div class="text-center pt-5 " style={{ fontSize: 30 }}>
         <GiBookStorm size={40} color="" style={{ marginRight: 10 }} />
 
-        <span>Online Restaurant Management System</span>
+        <span style={{fontSize:"bold",fontFamily:"cursive"}}>Online Restaurant Management System</span>
       </div>
       <p class="text-center">
         <FiUserPlus
@@ -65,15 +66,15 @@ export default function Login() {
       <Container fluid ClassName="justify-content-center">
         <div class="row justify-content-center mt-5">
           <Col lg={4} md={6} sm={8}>
-            <Form.Text className=" p-2" style={{ float: "right" }}>
+            <Form.Text className=" p-2" style={{ float: "right",color:"#dfebf2" }} >
               Need an Account{" "}
-              <Link to="/SignUp" ClassName="text-decoration-none text-black">
+              <Link to="/SignUp" style={{color:"white"}}>
                 SignUp
               </Link>
             </Form.Text>
             <div
 
-              style={{ padding: 30, boxShadow: "0 1rem 3rem rgba(0,0,0,.175)" }}
+              style={{ padding: 30, boxShadow: "0 1rem 3rem #061521" }}
             >
 
               <CustomInput label="Email" type="Email" placeholder="Enter Your Email" value={Email} text="We'll never share your email with anyone else."
@@ -88,7 +89,7 @@ export default function Login() {
 
 
 
-              <Button variant="outline-info" type="submit" onClick={onSubmit}>
+              <Button variant="dark" type="submit" onClick={onSubmit}>
                 Submit
               </Button>
             </div>
@@ -97,10 +98,13 @@ export default function Login() {
 
         </div>
         <h2 style={{marginTop:20,textAlign:"center"}}>
-       <Butt onClick={()=>{history.replace("/")}}>Back to Home</Butt>
+       <Button onClick={()=>{history.replace("/")}}>Back to Home</Button>
           </h2>
        
       </Container>
+      <br/>
+      <br/>
+      
     
     </div>
   );

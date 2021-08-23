@@ -34,9 +34,10 @@ export default function User() {
                   height="200px"
                   className="cc "
                 />
-                <Card.Body style={{height:200}}>
+                <Card.Body style={{}}>
                   <Card.Title>{item.RestaurantName}</Card.Title>
-                  <Card.Text>{item.RestaurantDesc}</Card.Text>
+                  <Card.Text style={{height:100}} className="overflow-hidden">{item.RestaurantDesc}</Card.Text>
+
   
                 
                 </Card.Body>

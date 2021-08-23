@@ -10,7 +10,7 @@ import About from './Home/About'
 import Shop from './Home/Shop'
 import Menu from './Home/Menu'
 import Clients from './Home/Clients'
-import Prices from './Home/Prices'
+import TopRestaurant from './Home/TopRestaurant'
 import banner from '../../assets/First/banner.jpg'
 
 
@@ -39,7 +39,7 @@ export default function Home() {
       <Shop />
       <Menu />
       <Clients />
-      <Prices />
+      <TopRestaurant />
 
 
       {/* Modal For Latest News */}

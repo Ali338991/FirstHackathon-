@@ -35,15 +35,13 @@
 
 
 .Course_Card{
-  overflow: hidden;
-  position: relative;
-  /* background-color: brown;   */
+
 
   
 }
 .Course_Card:hover{   
  
-  transition: all 0.2s;   
+  transition: all 0.4s;   
   transform: scale(1.05);
 
 

@@ -8,9 +8,9 @@ export  function CustomInput(props) {
       return (
         <Form>
         <Form.Group className="mb-3" controlId={`formBasic${type}`}>
-          <Form.Label className="fw-bold">{label}</Form.Label>
+          <Form.Label className="fw-bold text-white">{label}</Form.Label>
           <Form.Control type={type} value={value} placeholder={placeholder} className="CustomInput " onChange={onChange} />
-          <Form.Text className="text-muted">
+          <Form.Text className="" style={{color:"#dfebf2"}}>
             {text}
           </Form.Text>
         </Form.Group>

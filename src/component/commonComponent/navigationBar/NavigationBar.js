@@ -17,6 +17,11 @@ export default function NavigationBar() {
     }
   };
   window.addEventListener('scroll', changeNavbarColor);
+  const move = () => {
+  window.scrollTo(0, 0)
+
+
+  }
 
   return (
     <div className="mar">
@@ -30,16 +35,16 @@ export default function NavigationBar() {
             <Nav
               className="ms-auto"
               onSelect={(selectedKey) => history.push(selectedKey)}>
-              <Nav.Link eventKey="/" >Home</Nav.Link>
-              <Nav.Link eventKey="AboutUs" color="red">
+              <Nav.Link eventKey="/" onClick={move}>Home</Nav.Link>
+              <Nav.Link href="#About" >
                 About Us
               </Nav.Link>
-              <Nav.Link eventKey="News">News</Nav.Link>
+              <Nav.Link  href="#Restaurant">Restaurant</Nav.Link>
 
 
             </Nav>
             <Nav className="ms-3">
-              <Nav.Link as={Link} to="/Login" style={{ backgroundColor: "white", color: "black", borderRadius: 10, textAlign: "center" }}>Join</Nav.Link>
+              <Nav.Link as={Link} to="/Login" style={{ backgroundColor: "white", color: "black", borderRadius: 10, textAlign: "center" }}>Order</Nav.Link>
 
             </Nav>
 

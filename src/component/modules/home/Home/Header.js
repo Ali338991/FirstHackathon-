@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
+import '../Home.css'
 import NavigationBar from '../../../commonComponent/navigationBar/NavigationBar'
 const Header = () => {
   return (
-    <div className="banner">
+    <div className="banner" >
       <NavigationBar />
       <div className="banner__content">
         <div className="container">
@@ -15,8 +15,8 @@ const Header = () => {
               minus ut mollitia error molestiae quia.
             </p>
             <div className="banner__btn">
-              <a href="" className="btn btn-smart">
-                DEVLERY NOW
+              <a href="/AdminLogin" className="Button" style={{fontSize:20}}>
+                Start Business
               </a>
             </div>
           </div>

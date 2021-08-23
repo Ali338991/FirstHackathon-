@@ -3,7 +3,7 @@ import Pizza from '../../../assets/home/pizza.jpg'
 
 const About = () => {
   return (
-    <div className="about">
+    <div className="about" id="About">
       <div className="container">
         <div className="row">
           <div className="col-md-6 col-sm-12 p-25">
@@ -14,11 +14,7 @@ const About = () => {
               legunt saepius. Claritas est etiam processus dynaus, quise
               sequitur mutationem consuetudium lectorum.
             </p>
-            <div className="about__btn">
-              <a href="" className="btn btn-smart">
-                READ MORE
-              </a>
-            </div>
+          
           </div>
           <div className="col-sm-12 col-md-6 ">
             <div className="about__img">
